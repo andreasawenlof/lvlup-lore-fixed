@@ -1,1 +1,1 @@
-web: gunicorn lvluplore.wsgi
+web: gunicorn main.wsgi
