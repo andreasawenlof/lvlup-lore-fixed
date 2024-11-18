@@ -1,1 +1,17 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+    {% for post in post_list %}
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h2 class="card-title">{{ post.title }}</h2>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
