@@ -3,5 +3,5 @@ from .models import Post
 
 
 class PostList(ListView):
-    template_name = "home/index.html"
+    template_name = "blog/index.html"
     queryset = Post.objects.filter(status=1)

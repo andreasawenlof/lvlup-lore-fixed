@@ -7,7 +7,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Post(models.Model):
     """Defining Post Model"""
 
-    title = models.CharField(max_length=200, unique=True, blank=False)
+    title = models.CharField(max_length=200, unique=True, blank=False, null=False)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
@@ -15,3 +15,12 @@ class Post(models.Model):
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    excerpt = models.TextField(blank=True)
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
