@@ -31,7 +31,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEVELOPMENT" in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com"]
+
+CSRF_TRUSTED_ORIGINS = ["https://127.0.0.1", "https://*.herokuapp.com"]
 
 
 # Application definition
@@ -95,6 +97,8 @@ TEMPLATES = [
         },
     },
 ]
+
+WSGI_APPLICATION = "lvluplore.wsgi.application"
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
