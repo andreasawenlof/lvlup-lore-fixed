@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     # Optional -- requires install using `django-allauth[socialaccount]`.
     "allauth.socialaccount",
     # Apps
-    "home",
+    "blog",
     # Others
     "crispy_forms",
     "crispy_bootstrap5",
