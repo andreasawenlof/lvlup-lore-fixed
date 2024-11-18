@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    /* Fonts */
+    --title: 'Press Start 2P', serif;
+    --main-font: 'Roboto', serif;
+
+    /* Colors */
+    --dark-background: #251e1e;
+    --background: #e6e2e2;
+    --black: #000;
+    --white: #fff;
+    --hover-bright: #7b7979;
+
+    /* Breakpoints */
+    --breakpoint-sm: 600px;
+    --breakpoint-md: 900px;
+    --breakpoint-lg: 1200px;
+
+    /* Box shadows */
+    --box-shadow: 1px 1px 7px 0 #0000006e;
+    --large-box-shadow: 3px 3px 15px 0 #0000006e;
+    --medium-box-shadow: 2px 2px 10px 0 #0000006e;
+    --small-box-shadow: 1px 1px 7px 0 #0000006e;
+
+    /* Utils */
+    --smal-box-shadow: 1px -1px 7px 0 #0000006e;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
+}
+
+h1, h2, h3, h5, h6 {
+    font-family: var(--title);
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: var(--white);
+}
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    background-color: var(--background);
+}
+
+footer .nav li a {
+    margin: 0 auto;
+}
+
+
+
+
+/* Header */
+.navbar {
+    background-color: var(--background);
+}
+
+a.nav-link {
+    color: var(--black);
+    font-family: var--(--main-font);
+}
+
+a.nav-link:hover {
+    color: var(--hover-bright);
+}
+
+img.logo {
+    width: 14rem;
+}
+
+/* Logo */
+/* .navbar-brand {
+    width: 10%;
+    height: 10%;    
+}
+.navbar-brand .logo {
+    width: 100%;
+    height: 100%;
+} */
+
+/* Navbar */
+/* 
+.navbar {
+    background-color: var(--background);
+    height: 6rem;
+}
+.navbar a {
+    font-family: "Press Start 2P";
+    font-size: 1rem;
+    margin: 0 0.5em;
+    
+}
+ */
