@@ -11,6 +11,7 @@
     --black: #000;
     --white: #fff;
     --hover-bright: #7b7979;
+    --blue: #0a0c32;
 
     /* Breakpoints */
     --breakpoint-sm: 600px;
@@ -75,6 +76,19 @@ a.nav-link:hover {
 
 img.logo {
     width: 14rem;
+}
+
+.active {
+    border-bottom: 2px solid var(--blue);
+    font-weight: 500;
+}
+
+/* Form */
+
+.form {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--small-box-shadow);
 }
 
 /* Logo */
