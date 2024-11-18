@@ -11,17 +11,8 @@
     --black: #000;
     --white: #fff;
     --hover-bright: #7b7979;
+    --blue: #0a0c32;
 
-    /* Breakpoints */
-    --breakpoint-sm: 600px;
-    --breakpoint-md: 900px;
-    --breakpoint-lg: 1200px;
-
-    /* Box shadows */
-    --box-shadow: 1px 1px 7px 0 #0000006e;
-    --large-box-shadow: 3px 3px 15px 0 #0000006e;
-    --medium-box-shadow: 2px 2px 10px 0 #0000006e;
-    --small-box-shadow: 1px 1px 7px 0 #0000006e;
 
     /* Utils */
     --smal-box-shadow: 1px -1px 7px 0 #0000006e;
@@ -46,16 +37,6 @@ main {
     background-color: var(--white);
 }
 
-/* Footer */
-footer {
-    flex-shrink: 0;
-    background-color: var(--background);
-}
-
-footer .nav li a {
-    margin: 0 auto;
-}
-
 
 
 
@@ -67,6 +48,9 @@ footer .nav li a {
 a.nav-link {
     color: var(--black);
     font-family: var--(--main-font);
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
 }
 
 a.nav-link:hover {
@@ -75,6 +59,30 @@ a.nav-link:hover {
 
 img.logo {
     width: 14rem;
+}
+
+.active {
+    border-bottom: 2px solid var(--blue);
+    font-weight: 500;
+}
+
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    background-color: var(--background);
+}
+
+footer .nav li a {
+    margin: 0 auto;
+}
+
+/* Form */
+
+.form {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--small-box-shadow);
 }
 
 /* Logo */
