@@ -26,6 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: var(--main-font);
+    background-color: #ada8a8;
 }
 
 h1, h2, h3, h5, h6 {
@@ -34,7 +35,13 @@ h1, h2, h3, h5, h6 {
 
 main {
     flex: 1 0 auto;
-    background-color: var(--white);
+    background-color: #ada8a8;
+    margin-top: 7rem;
+}
+
+.container-home-title {
+    color: var(--white);
+    text-shadow: var(--smal-box-shadow);
 }
 
 
@@ -43,6 +50,10 @@ main {
 /* Header */
 .navbar {
     background-color: var(--background);
+    box-shadow: var(--smal-box-shadow);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
 }
 
 a.nav-link {
@@ -50,7 +61,7 @@ a.nav-link {
     font-family: var--(--main-font);
     padding-left: 0.5em;
     padding-top: 0.2em;
-    padding-bottom: 0.2em;
+    padding-bottom: 0.5em;
 }
 
 a.nav-link:hover {
@@ -58,7 +69,7 @@ a.nav-link:hover {
 }
 
 img.logo {
-    width: 14rem;
+    width: 10rem;
 }
 
 .active {
@@ -90,6 +101,29 @@ footer {
     margin: 3% auto;
     box-shadow: var(--small-box-shadow);
 }
+
+.card {
+    border-radius: 12px;
+    width: 22rem;
+    background-color: var(--white);
+    box-shadow: var(--smal-box-shadow);
+}
+
+.card img:hover {
+    filter: brightness(80%);
+    transition: filter 0.3s ease;
+}
+
+.card-body a {
+    color: var(--black);
+    text-decoration: none;  
+}
+
+.card-body a:hover {
+    text-decoration: underline;
+}
+
+
 
 /* Logo */
 /* .navbar-brand {

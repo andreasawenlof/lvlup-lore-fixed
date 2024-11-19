@@ -19,7 +19,7 @@ class Post(models.Model):
     image = ResizedImageField(
         size=[400, None],
         quality=75,
-        upload_to="blog/",
+        upload_to="blog/images",
         force_format="WEBP",
         default="images/logo/logo6.webp",
         blank=False,
