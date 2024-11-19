@@ -35,6 +35,7 @@ h1, h2, h3, h5, h6 {
 main {
     flex: 1 0 auto;
     background-color: var(--white);
+    margin-top: 7rem;
 }
 
 
@@ -43,6 +44,10 @@ main {
 /* Header */
 .navbar {
     background-color: var(--background);
+    box-shadow: var(--smal-box-shadow);
+    position: fixed;
+    width: 100%;
+    z-index: 2;
 }
 
 a.nav-link {
@@ -58,7 +63,7 @@ a.nav-link:hover {
 }
 
 img.logo {
-    width: 14rem;
+    width: 10rem;
 }
 
 .active {

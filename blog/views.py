@@ -2,11 +2,14 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 
 class PostList(ListView):
-    model = Post
     template_name = "blog/index.html"
+    model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
+    context_object_name = "posts"
 
 
 class PostDetail(ListView):
@@ -15,7 +18,7 @@ class PostDetail(ListView):
     queryset = Post.objects.filter(status=1)
 
 
-class CreatePost(CreateView):
+class CreatePost(LoginRequiredMixin, CreateView):
     """Create Post View"""
 
     template_name = "blog/create_post.html"
