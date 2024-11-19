@@ -6,7 +6,7 @@
     Home
 {% endblock %}
 {% block content %}
-    <div class="container d-flex flex-row flex-wrap justify-content-evenly">
+    <div class="container d-flex flex-row flex-wrap justify-content-evenly mt-3 mb-3">
         {% for post in post_list %}
             <div class="card" style="width: 18rem;">
                 <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.image_alt }}" />
