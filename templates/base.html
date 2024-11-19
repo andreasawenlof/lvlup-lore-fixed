@@ -27,5 +27,8 @@
             {% endblock %}
         </main>
         {% include 'includes/footer.html' %}
+        {% comment %} {% block tinymce %}
+            <script src="{% static '/js/tinymce_config.js/' %}"></script>
+        {% endblock %} {% endcomment %}
     </body>
 </html>

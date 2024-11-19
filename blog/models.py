@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_resized import ResizedImageField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -14,14 +15,27 @@ class Post(models.Model):
     )
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    excerpt = models.TextField(blank=False)
+    image = ResizedImageField(
+        size=[400, None],
+        quality=75,
+        upload_to="blog/",
+        force_format="WEBP",
+        default="images/logo/logo6.webp",
+        blank=False,
+        null=False,
+        max_length=100,
+    )
+    image_alt = models.CharField(
+        max_length=100, null=False, blank=False, default="Describe the image"
+    )
     status = models.IntegerField(choices=STATUS, default=0)
-    excerpt = models.TextField(blank=True)
 
     class Meta:
-        ordering = ["created_on"]
+        ordering = ["-created_on"]
 
     def __str__(self):
-        return f"Post with the title: {self.title} | written by {self.author}"
+        return self.title
 
 
 class Comment(models.Model):

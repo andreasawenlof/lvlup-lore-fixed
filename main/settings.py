@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "tinymce",
+    "cloudinary",
+    "cloudinary_storage",
 ]
 
 SITE_ID = 1
@@ -169,7 +171,22 @@ STATIC_URL = "static/"
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
+# Cloudinary Settings
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# TinyMCE Configuration
+TINYMCE_DEFAULT_CONFIG = {
+    "selector": "textarea",  # Automatically apply to all textareas
+    "height": 300,
+    "width": "100%",
+    "plugins": "link image preview codesample table code lists",
+    "toolbar": "undo redo | bold italic underline | link image | alignleft aligncenter alignright | code",
+    "branding": False,  # Remove the "tiny" logo
+    "promotion": False,  # Disable promotional content
+}
