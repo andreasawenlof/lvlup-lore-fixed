@@ -1,3 +1,5 @@
+from django.db.models import Q
+from django.db.models.functions import Random
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -14,7 +16,23 @@ class PostList(ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     context_object_name = "posts"
-    paginate_by = 3
+    paginate_by = 5
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+
+        # If there's a search query, filter posts by title
+        if query:
+            return Post.objects.filter(Q(title__icontains=query)).order_by(
+                "-created_on"
+            )
+
+        # If the search form was submitted with an empty query (active query but blank input)
+        if self.request.GET.get("q") == "":
+            return Post.objects.order_by(Random())[:1]
+
+        # If no query is provided, show all posts
+        return Post.objects.all().order_by("-created_on")
 
 
 def post_detail(request, slug):
@@ -33,7 +51,7 @@ def post_detail(request, slug):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
-    comment_count = post.comments.filter(approved=True).count()
+    comment_count = post.comments.count()
 
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)

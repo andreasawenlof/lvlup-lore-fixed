@@ -3,12 +3,14 @@ from django.db import models
 from .models import Post, Comment
 from django.contrib.admin import ModelAdmin
 from tinymce.widgets import TinyMCE
+from .forms import PostForm
 
 
 @admin.register(Post)
 class PostAdmin(ModelAdmin):
     """Admin interface for managing Posts"""
 
+    form = PostForm
     list_display = (
         "title",
         "slug",
@@ -19,11 +21,6 @@ class PostAdmin(ModelAdmin):
         "image_alt",
         "status",
     )
-    formfield_overrides = {
-        models.TextField: {
-            "content": {"widget": TinyMCE()},
-        },
-    }
 
     # list_display = ("title", "slug", "author", "created_on", "status")
     # list_filter = ("status", "created_on")
