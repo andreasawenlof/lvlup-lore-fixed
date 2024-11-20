@@ -33,6 +33,10 @@ h1, h2, h3, h5, h6 {
     font-family: var(--title);
 }
 
+h3 {
+    font-family: var(--main-font);
+}
+
 main {
     flex: 1 0 auto;
     background-color: #ada8a8;
