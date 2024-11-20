@@ -1,4 +1,4 @@
-from typing import Any
+from django.urls import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post, Comment
@@ -79,7 +79,6 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = "blog/edit_post.html"
     model = Post
     form_class = PostForm
-    success_url = "/"
 
     def test_func(self):
         return self.request.user.is_staff
@@ -88,3 +87,13 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         context = super(EditPost, self).get_context_data(**kwargs)
         context["post"] = self.get_object()
         return context
+
+    def get_success_url(self):
+        return reverse_lazy("post_detail", kwargs={"slug": self.get_object().slug})
+
+
+class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """Delete a Post"""
+
+    model = Post
+    success_url = "/"
