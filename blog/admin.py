@@ -31,4 +31,4 @@ class PostAdmin(ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(ModelAdmin):
-    " Admin Interface for managing comments " ""
+    """Admin Interface for managing comments"""

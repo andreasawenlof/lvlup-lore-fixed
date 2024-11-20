@@ -97,3 +97,7 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     model = Post
     success_url = reverse_lazy("home")
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user.is_staff
