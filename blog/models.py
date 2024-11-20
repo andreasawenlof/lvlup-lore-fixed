@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_resized import ResizedImageField
+from .utils import generate_unique_slug
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -23,7 +24,7 @@ class Post(models.Model):
     )
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
-    excerpt = models.TextField(blank=False)
+    excerpt = models.TextField(blank=False, null=False)
     image = ResizedImageField(
         size=[400, None],
         quality=75,
@@ -41,6 +42,12 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created_on"]
+
+    def save(self, *args, **kwargs):
+        # Generate slug if it's not set
+        if not self.slug:
+            self.slug = generate_unique_slug(Post, self.title)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

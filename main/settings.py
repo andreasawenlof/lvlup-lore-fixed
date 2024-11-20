@@ -189,11 +189,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # TinyMCE Configuration
 TINYMCE_DEFAULT_CONFIG = {
-    "selector": "textarea",  # Automatically apply to all textareas
+    "selector": "#id_content",
     "height": 300,
     "width": "100%",
     "plugins": "link image preview codesample table code lists",
-    "toolbar": "undo redo | bold italic underline | link image | alignleft aligncenter alignright | code",
+    "toolbar": "undo redo | bold italic underline | alignleft aligncenter alignright | code",
     "branding": False,  # Remove the "tiny" logo
     "promotion": False,  # Disable promotional content
 }
