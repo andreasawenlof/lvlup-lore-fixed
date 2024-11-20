@@ -9,12 +9,20 @@ class Post(models.Model):
     """Defining Post Model"""
 
     title = models.CharField(max_length=200, unique=True, blank=False, null=False)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(
+        max_length=200,
+        unique=True,
+        blank=True,
+        editable=False,
+    )
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts"
+        User,
+        on_delete=models.CASCADE,
+        related_name="blog_posts",
+        editable=False,
     )
     content = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True, editable=False)
     excerpt = models.TextField(blank=False)
     image = ResizedImageField(
         size=[400, None],
@@ -39,11 +47,14 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="comments", editable=False
+    )
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="commenter", editable=False
+    )
     body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
         ordering = ["-created_on"]
