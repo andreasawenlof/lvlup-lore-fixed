@@ -96,4 +96,4 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Delete a Post"""
 
     model = Post
-    success_url = "/"
+    success_url = reverse_lazy("home")
