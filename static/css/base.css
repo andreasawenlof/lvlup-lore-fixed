@@ -33,6 +33,11 @@ h1, h2, h3, h5, h6 {
     font-family: var(--title);
 }
 
+h2 {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
 h3 {
     font-family: var(--main-font);
 }

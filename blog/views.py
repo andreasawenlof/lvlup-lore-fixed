@@ -14,7 +14,7 @@ class PostList(ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     context_object_name = "posts"
-    paginate_by = 3
+    paginate_by = 5
 
 
 def post_detail(request, slug):
@@ -33,7 +33,7 @@ def post_detail(request, slug):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
-    comment_count = post.comments.filter(approved=True).count()
+    comment_count = post.comments.count()
 
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
