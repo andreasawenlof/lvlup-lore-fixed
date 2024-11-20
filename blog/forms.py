@@ -10,8 +10,10 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ["title", "content", "excerpt", "image", "image_alt", "status"]
         widgets = {
-            "excerpt": forms.Textarea(attrs={"rows": 5}),
             "content": TinyMCE(),
+            "excerpt": forms.Textarea(
+                attrs={"rows": 5}
+            ),  # Use standard Textarea for excerpt
         }
 
         labels = {
@@ -22,6 +24,10 @@ class PostForm(forms.ModelForm):
             "image_alt": "Describe Image",
             "status": "Save as Draft or Publish",
         }
+
+    def __init__(self, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+        self.fields["excerpt"].required = False  # Make the excerpt field not required
 
 
 class CommentForm(forms.ModelForm):

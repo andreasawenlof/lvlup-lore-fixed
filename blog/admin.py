@@ -21,8 +21,8 @@ class PostAdmin(ModelAdmin):
     )
     formfield_overrides = {
         models.TextField: {
-            "widget": TinyMCE()
-        },  # Apply TinyMCE widget to all TextFields
+            "content": {"widget": TinyMCE()},
+        },
     }
 
     # list_display = ("title", "slug", "author", "created_on", "status")
