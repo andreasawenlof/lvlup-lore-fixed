@@ -12,9 +12,9 @@
             {% for post in posts %}
                 <div class="text-center mb-4">
                     <div class="card m-3">
-                        <a href="{% url 'post_detail' %}"><img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.image_alt }}" /></a>
+                        <a href="{% url 'post_detail' post.slug %}"><img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.image_alt }}" /></a>
                         <div class="card-body">
-                            <a href="{% url 'post_detail' %}"><h2 class="card-title">{{ post.title }}</h2></a>
+                            <a href="{% url 'post_detail' post.slug %}"><h2 class="card-title">{{ post.title }}</h2></a>
                             <p class="card-text">
                                 <strong>{{ post.excerpt|safe|truncatechars:100 }}</strong>
                             </p>
