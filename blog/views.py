@@ -10,6 +10,7 @@ class PostList(ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     context_object_name = "posts"
+    paginate_by = 3
 
 
 class PostDetail(ListView):

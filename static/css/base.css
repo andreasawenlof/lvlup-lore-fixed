@@ -39,9 +39,9 @@ main {
     margin-top: 7rem;
 }
 
-.container-home-title {
-    color: var(--white);
+.title-card {
     text-shadow: var(--smal-box-shadow);
+    width: 100%;
 }
 
 
@@ -110,7 +110,7 @@ footer {
 }
 
 .card img:hover {
-    filter: brightness(80%);
+    filter: brightness(70%);
     transition: filter 0.3s ease;
 }
 
