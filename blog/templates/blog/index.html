@@ -21,6 +21,10 @@
                             <hr />
                             <p>by {{ post.author|title }}</p>
                             <p>{{ post.created_on }}</p>
+                            {% if request.user.is_authenticated and request.user.is_staff %}
+                                <a href="{% url 'post_edit' post.slug %}" class="btn btn-success w-50 mb-2 mt-2">Edit</a>
+                                <a href="{% url 'post_edit' post.slug %}" class="btn btn-success w-50">Delete</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

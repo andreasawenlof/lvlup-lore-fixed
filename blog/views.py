@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post, Comment
@@ -56,7 +57,7 @@ def post_detail(request, slug):
     )
 
 
-class CreatePost(LoginRequiredMixin, CreateView):
+class CreatePost(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     """Create Post View"""
 
     template_name = "blog/create_post.html"
@@ -64,6 +65,26 @@ class CreatePost(LoginRequiredMixin, CreateView):
     form_class = PostForm
     success_url = "/"
 
+    def test_func(self):
+        return self.request.user.is_staff
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super(CreatePost, self).form_valid(form)
+
+
+class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """Edit a post"""
+
+    template_name = "blog/edit_post.html"
+    model = Post
+    form_class = PostForm
+    success_url = "/"
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def get_context_data(self, **kwargs):
+        context = super(EditPost, self).get_context_data(**kwargs)
+        context["post"] = self.get_object()
+        return context
