@@ -6,6 +6,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib import messages
+from django.http import Http404
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -37,7 +38,22 @@ class PostList(ListView):
         return queryset.annotate(comment_count=Count("comments"))
 
 
-def post_detail(request, slug):
+class DraftPostList(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    template_name = "blog/draft_posts.html"
+    model = Post
+    context_object_name = "drafts"
+    paginate_by = 5
+
+    def get_queryset(self):
+        return Post.objects.filter(status=0, author=self.request.user).order_by(
+            "-created_on"
+        )
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+def post_detail(request, pk=None, slug=None):
     """
     Display an individual :model:`blog.Post`.
 
@@ -50,8 +66,17 @@ def post_detail(request, slug):
 
     :template:`blog/post_detail.html`
     """
-    queryset = Post.objects.filter(status=1)
-    post = get_object_or_404(queryset, slug=slug)
+
+    if pk:
+        post = get_object_or_404(Post, pk=pk)
+
+    elif slug:
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+
+    else:
+        raise Http404("Post does not exist")
+
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.count()
 
@@ -109,7 +134,11 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy("post_detail", kwargs={"slug": self.get_object().slug})
+        post = self.object
+        if post.status == 0:
+            return reverse_lazy("post_detail_by_pk", kwargs={"pk": post.pk})
+        else:
+            return reverse_lazy("post_detail_by_slug", kwargs={"slug": post.slug})
 
 
 class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
