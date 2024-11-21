@@ -51,101 +51,11 @@
                 <h3>Comments:</h3>
                 <div class="card-body">
                     {% for comment in comments %}
-                        <div class="p-2 comments{% if not comment.approved and comment.author == user %}
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                faded
+                        <div class="p-2 comments{% if comment.author == user %}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            {% elif not comment.approved %}
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
+                            {% elif not comment.author == user %}
                                 
                                 d-none
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                             {% endif %}">
                             <p class="font-weight-bold">
@@ -153,9 +63,6 @@
                                 <span class="font-weight-normal">{{ comment.created_on }}</span> wrote:
                             </p>
                             <div id="comment{{ comment.id }}">{{ comment.body|linebreaks }}</div>
-                            {% if not comment.approved and comment.author == user %}
-                                <p class="approval">This comment is awaiting approval</p>
-                            {% endif %}
                         </div>
                         <!-- Our for loop ends here -->
                     {% endfor %}
