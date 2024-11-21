@@ -26,7 +26,7 @@
                 <ul>
                     {% for post in commented_posts %}
                         <li>
-                            <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
+                            <strong><a href="{% url 'post_detail' post.slug %}" class="author-link">{{ post.title }}</a></strong>
                         </li>
                     {% empty %}
                         Hasn't commented on any posts yet.

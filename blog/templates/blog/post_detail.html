@@ -53,7 +53,7 @@
                     {% for comment in comments %}
                         <div class="p-2 comments">
                             <p class="font-weight-bold">
-                                <a href="{% url 'profile' pk=user.pk %}"><strong>{{ comment.author }}</strong></a>
+                                <a href="{% url 'profile' comment.author.pk %}" class="author-link"><strong>{{ comment.author }}</strong></a>
                                 <span class="font-weight-normal">{{ comment.created_on }}</span> wrote:
                             </p>
                             <div id="comment{{ comment.id }}">{{ comment.body }}</div>

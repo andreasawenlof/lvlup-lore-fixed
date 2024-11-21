@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.db.models.functions import Random
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404, render
@@ -20,19 +20,21 @@ class PostList(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get("q")
+        queryset = self.annotate_comment_count(Post.objects.filter(status=1))
 
         # If there's a search query, filter posts by title
         if query:
-            return Post.objects.filter(Q(title__icontains=query)).order_by(
-                "-created_on"
-            )
+            return queryset.filter(Q(title__icontains=query)).order_by("-created_on")
 
         # If the search form was submitted with an empty query (active query but blank input)
         if self.request.GET.get("q") == "":
-            return Post.objects.order_by(Random())[:1]
+            return queryset.order_by(Random())[:1]
 
         # If no query is provided, show all posts
-        return Post.objects.all().order_by("-created_on")
+        return queryset.order_by("-created_on")
+
+    def annotate_comment_count(self, queryset):
+        return queryset.annotate(comment_count=Count("comments"))
 
 
 def post_detail(request, slug):

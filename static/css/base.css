@@ -6,6 +6,7 @@
     --main-font: 'Roboto', serif;
 
     /* Colors */
+    --link-blue: #3348bd;
     --dark-background: #251e1e;
     --background: #e6e2e2;
     --black: #000;
@@ -46,6 +47,10 @@ main {
     flex: 1 0 auto;
     background-color: #ada8a8;
     margin-top: 7rem;
+}
+
+a {
+    text-decoration: none;
 }
 
 
@@ -121,12 +126,12 @@ footer {
     transition: filter 0.3s ease;
 }
 
-.card-body a {
+.card-title {
     color: var(--black);
     text-decoration: none;  
 }
 
-.card-body a:hover {
+.card-title:hover {
     text-decoration: underline;
 }
 
@@ -138,6 +143,18 @@ footer {
 .card-body .btn:hover {
     color: var(--background);
     text-decoration: none;
+}
+
+.author-link {
+    color: var(--link-blue);
+    text-decoration: none;
+}
+.author-link:hover {
+    text-decoration: underline;
+}
+
+.title-link {
+    color: --var(--link-blue);
 }
 
 

@@ -19,12 +19,17 @@
                                 <strong>{{ post.excerpt|safe|truncatechars:100 }}</strong>
                             </p>
                             <hr />
-                            <p class="author-link">
-                                by <strong>{{ post.author|title }}</strong>
+                            <p>
+                                by <strong><a href="{% url 'profile' post.author.pk %}" class="author-link">{{ post.author|title }}</a></strong>
                             </p>
                             <p>
                                 <strong>Post created:&nbsp;</strong>{{ post.created_on|date:'d M Y' }}
                             </p>
+                            <div class="row">
+                                <div class="col-3 mb-3">
+                                    <strong class="text-secondary"><i class="far fa-comments"></i> {{ post.comment_count }}</strong>
+                                </div>
+                            </div>
                             {% if request.user.is_authenticated and request.user.is_staff %}
                                 <a href="{% url 'post_edit' post.slug %}" class="btn btn-success mb-2 mt-2">Edit</a>
                             {% endif %}
