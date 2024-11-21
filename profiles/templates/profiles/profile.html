@@ -23,6 +23,15 @@
                     <strong>Posts commented on:</strong>
                 </p>
                 <hr />
+                <ul>
+                    {% for post in commented_posts %}
+                        <li>
+                            <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
+                        </li>
+                    {% empty %}
+                        <li>No posts to display. You haven't commented on any posts yet.</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
