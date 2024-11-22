@@ -1,19 +1,21 @@
-import logging
+""" Import the necessary modules """
 from django.db.models import Q, Count
 from django.db.models.functions import Random
-from django.urls import reverse, reverse_lazy
-from django.shortcuts import get_object_or_404, render, redirect, reverse
-from django.views import View
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import Post, Comment
-from .forms import PostForm, CommentForm, EditCommentForm
+from django.urls import reverse_lazy, reverse
 from django.contrib import messages
-from django.http import Http404, JsonResponse
+from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.http import Http404, HttpResponseRedirect
+
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
+
 
 class PostList(ListView):
+    """ List of all posts """
     template_name = "blog/index.html"
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
@@ -36,10 +38,12 @@ class PostList(ListView):
         return queryset.order_by("-created_on")
 
     def annotate_comment_count(self, queryset):
+        """ Annotate the queryset with the number of comments on each post """
         return queryset.annotate(comment_count=Count("comments"))
 
 
 class DraftPostList(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    """ List of all draft posts """
     template_name = "blog/draft_posts.html"
     model = Post
     context_object_name = "drafts"
@@ -150,35 +154,35 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = reverse_lazy("home")
 
     def test_func(self):
-        post = self.get_object()
         return self.request.user.is_staff
 
 
-logger = logging.getLogger(__name__)
+def edit_comment(request, slug, comment_id):
+    """ view to edit a comment """
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    if request.method == "POST":
+        # Update the comment body
+        comment.body = request.POST.get("body")
+        comment.save()
+        messages.success(request, "Comment updated successfully!")
+        return redirect("post_detail_by_slug", slug=slug)
+
+    messages.error(request, "Invalid request.")
+    return redirect("post_detail_by_slug", slug=slug)
 
 
-class EditComment(View):
-    def post(self, request, pk):
-        try:
-            comment = get_object_or_404(Comment, pk=pk)
-            if request.user == comment.author or request.user.is_staff:
-                form = EditCommentForm(request.POST, instance=comment)
-                if form.is_valid():
-                    form.save()
-                    if request.headers.get("x-requested-with") == "XMLHttpRequest":
-                        return JsonResponse({"success": True, "body": comment.body})
-                    else:
-                        messages.success(
-                            request, "Comment has been successfully updated."
-                        )
-                        return redirect("post_detail_by_slug", slug=comment.post.slug)
-                else:
-                    logger.error("Form is not valid: %s", form.errors)
-            else:
-                logger.error("User is not authorized to edit this comment")
-        except Exception as e:
-            logger.exception("An error occurred while editing the comment")
+def delete_comment(request, slug, comment_id):
+    """ view to delete a comment """
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
 
-        if request.headers.get("x-requested-with") == "XMLHttpRequest":
-            return JsonResponse({"success": False, "error": "An error occurred"})
-        return redirect("post_detail_by_slug", slug=comment.post.slug)
+    if comment.author == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, "Comment deleted!")
+    else:
+        messages.add_message(request, messages.ERROR,
+                             "You can only delete your own comments!")
+
+    return HttpResponseRedirect(reverse('post_detail_by_slug', args=[slug]))
