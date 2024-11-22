@@ -17,7 +17,7 @@ class Profile(models.Model):
         quality=75,
         upload_to="profiles/",
         force_format="WEBP",
-        blank=False,
+        blank=True,
     )
     bio = models.TextField(max_length=2500, null=True, blank=True)
 
