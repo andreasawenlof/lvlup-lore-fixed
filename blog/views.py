@@ -1,13 +1,14 @@
+import logging
 from django.db.models import Q, Count
 from django.db.models.functions import Random
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect, reverse
+from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Post, Comment
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, EditCommentForm
 from django.contrib import messages
-from django.http import Http404
-
+from django.http import Http404, JsonResponse
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -87,6 +88,7 @@ def post_detail(request, pk=None, slug=None):
             comment.author = request.user
             comment.post = post
             comment.save()
+            return redirect("post_detail_by_slug", slug=post.slug)
 
     comment_form = CommentForm()
 
@@ -150,3 +152,33 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user.is_staff
+
+
+logger = logging.getLogger(__name__)
+
+
+class EditComment(View):
+    def post(self, request, pk):
+        try:
+            comment = get_object_or_404(Comment, pk=pk)
+            if request.user == comment.author or request.user.is_staff:
+                form = EditCommentForm(request.POST, instance=comment)
+                if form.is_valid():
+                    form.save()
+                    if request.headers.get("x-requested-with") == "XMLHttpRequest":
+                        return JsonResponse({"success": True, "body": comment.body})
+                    else:
+                        messages.success(
+                            request, "Comment has been successfully updated."
+                        )
+                        return redirect("post_detail_by_slug", slug=comment.post.slug)
+                else:
+                    logger.error("Form is not valid: %s", form.errors)
+            else:
+                logger.error("User is not authorized to edit this comment")
+        except Exception as e:
+            logger.exception("An error occurred while editing the comment")
+
+        if request.headers.get("x-requested-with") == "XMLHttpRequest":
+            return JsonResponse({"success": False, "error": "An error occurred"})
+        return redirect("post_detail_by_slug", slug=comment.post.slug)

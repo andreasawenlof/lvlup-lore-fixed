@@ -6,6 +6,7 @@ from .views import (
     EditPost,
     DeletePost,
     DraftPostList,
+    EditComment,
 )
 
 urlpatterns = [
@@ -20,4 +21,5 @@ urlpatterns = [
         name="post_delete",
     ),
     path("drafts/", DraftPostList.as_view(), name="draft_posts"),
+    path("comment/<int:pk>/edit/", EditComment.as_view(), name="edit_comment"),
 ]
