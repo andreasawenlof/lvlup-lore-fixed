@@ -1,3 +1,4 @@
+""" This module contains the URL patterns for the blog app. """
 from django.urls import path
 from .views import (
     PostList,
@@ -6,7 +7,8 @@ from .views import (
     EditPost,
     DeletePost,
     DraftPostList,
-    EditComment,
+    delete_comment,
+    edit_comment
 )
 
 urlpatterns = [
@@ -21,5 +23,9 @@ urlpatterns = [
         name="post_delete",
     ),
     path("drafts/", DraftPostList.as_view(), name="draft_posts"),
-    path("comment/<int:pk>/edit/", EditComment.as_view(), name="edit_comment"),
+    path("post/<slug:slug>/delete_comment/<int:comment_id>/",
+         delete_comment, name="delete_comment"),
+    path("post/<slug:slug>/edit_comment/<int:comment_id>/",
+         edit_comment, name="edit_comment"),
+
 ]

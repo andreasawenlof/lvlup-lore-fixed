@@ -1,3 +1,5 @@
+""" Import the necessary modules """
+
 from django.db import models
 from django.contrib.auth.models import User
 from django_resized import ResizedImageField
@@ -40,7 +42,11 @@ class Post(models.Model):
     )
     status = models.IntegerField(choices=STATUS, default=0)
 
+    objects = models.Manager()
+
     class Meta:
+        """Meta class for ordering the posts"""
+
         ordering = ["-created_on"]
 
     def save(self, *args, **kwargs):
@@ -50,10 +56,12 @@ class Post(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        return f"{self.title}"
 
 
 class Comment(models.Model):
+    """Defining Comment Model"""
+
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments", editable=False
     )
@@ -64,7 +72,9 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
+        """Meta class for ordering the comments"""
+
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"Comment on post with title: {self.post.title} | from {self.author}."
+        return f"Comment on post with title: {self.post} | from {self.author}."

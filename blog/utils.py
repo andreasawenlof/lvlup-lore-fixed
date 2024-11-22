@@ -1,3 +1,4 @@
+""" Utility functions for the blog app. """
 from django.utils.text import slugify
 
 

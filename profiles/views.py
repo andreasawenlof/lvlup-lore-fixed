@@ -1,10 +1,14 @@
-from django.contrib.auth.models import User
+""" Import the necessary modules """
+
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, UpdateView
+from django.contrib.auth.models import User  # Import the User model
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
+from blog.models import Post
+
 from .forms import ProfileForm
 from .models import Profile
-from blog.models import Post, Comment
-
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class Profiles(TemplateView):
@@ -13,8 +17,8 @@ class Profiles(TemplateView):
     template_name = "profiles/profile.html"
 
     def get_context_data(self, **kwargs):
-        user = User.objects.get(id=self.kwargs["pk"])
-        profile = Profile.objects.get(user=user)
+        user = get_object_or_404(User, id=self.kwargs["pk"])
+        profile = get_object_or_404(Profile, user=user)
 
         # Get all posts that the user has commented on
         commented_posts = Post.objects.filter(comments__author=user).distinct()
@@ -40,4 +44,4 @@ class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
     def test_func(self):
-        return self.request.user == self.get_pbject().user
+        return self.request.user == self.get_object().user
