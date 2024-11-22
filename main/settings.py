@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEVELOPMENT" in os.environ
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com"]
+ALLOWED_HOSTS = [os.environ.get("HOST")]
 
 CSRF_TRUSTED_ORIGINS = ["https://127.0.0.1", "https://*.herokuapp.com"]
 
@@ -171,9 +171,12 @@ LOGIN_REDIRECT_URL = "/"
 
 
 # Static
-STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # Local static files
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = "static/"
+
+if "DEVELOPMENT" in os.environ:
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+else:
+    STATIC_ROOT = BASE_DIR / "static"
 
 # Whitenoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
