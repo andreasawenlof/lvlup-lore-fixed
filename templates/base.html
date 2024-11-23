@@ -21,13 +21,13 @@
     </head>
     <body>
         {% include 'includes/header.html' %}
+        {% include 'includes/modals.html' %}
         <main>
             {% block content %}
 
             {% endblock %}
         </main>
         {% include 'includes/footer.html' %}
-        {% include 'includes/confirmation_modal.html' %}
         <script src="{% static 'js/comments.js' %}"></script>
         <script src="{% static 'js/confirmation_modal.js' %}"></script>
         <script src="https://kit.fontawesome.com/0a08a9900a.js" crossorigin="anonymous"></script>

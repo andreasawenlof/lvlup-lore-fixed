@@ -31,7 +31,7 @@ class Post(models.Model):
     image = CloudinaryField("image", null=False,
                             blank=False)
     image_alt = models.CharField(
-        max_length=100, null=False, blank=False, default="Describe the image"
+        max_length=100, null=False, blank=False
     )
     status = models.IntegerField(choices=STATUS, default=0)
 

@@ -3,16 +3,16 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans 'Sign In' %}
+    {% trans 'Log In' %}
 {% endblock %}
 
 {% block content %}
-    <div class="container text-center mt-3">
-        <h1 clas="mb-3">{% trans 'Sign In' %}</h1>
+    <div class="container text-center mt-5 w-75">
+        <h1 clas="mb-3">{% trans 'Log In' %}</h1>
 
         <p>
             {% blocktrans %}If you have not created an account yet, then please
-            <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+            <a href="{{ signup_url }}" class="general-link">sign up</a> first.{% endblocktrans %}
         </p>
 
         <form class="form p-2" method="POST" action="{% url 'account_login' %}">
@@ -21,8 +21,8 @@
             {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
-            <button class="btn btn-success w-25 mb-2" type="submit">{% trans 'Sign In' %}</button>
-            <a class="button secondaryAction d-block" href="{% url 'account_reset_password' %}">{% trans 'Forgot Password?' %}</a>
+            <button class="btn btn-success w-50 mb-2" type="submit">{% trans 'Sign In' %}</button>
+            <a class="button secondaryAction d-block general-link" href="{% url 'account_reset_password' %}">{% trans 'Forgot Password?' %}</a>
         </form>
     </div>
 {% endblock %}

@@ -43,14 +43,14 @@
                                 <a class="nav-link {% if url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if url_name == 'accounts_logout' %}active{% endif %}" href="/accounts/logout/">Logout</a>
+                                <a href="#" class="nav-link cursor-pointer" data-bs-toggle="modal" data-bs-target="#logoutModal">Log out</a>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link {% if url_name == 'accounts_signup' %}active{% endif %}" href="/accounts/signup/">Register</a>
+                                <a class="nav-link {% if url_name == 'accounts_signup' %}active{% endif %}" href="/accounts/signup/">Sign Up</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if url_name == 'accounts_login' %}active{% endif %}" href="/accounts/login/">Login</a>
+                                <a class="nav-link {% if url_name == 'accounts_login' %}active{% endif %}" href="/accounts/login/">Log In</a>
                             </li>
                         {% endif %}
                     </ul>
