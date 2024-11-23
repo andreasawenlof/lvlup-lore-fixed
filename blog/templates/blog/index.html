@@ -14,9 +14,13 @@
                     <div class="card m-3">
                         <a href="{% url 'post_detail_by_slug' post.slug %}"><img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.image_alt }}" /></a>
                         <div class="card-body">
-                            <a href="{% url 'post_detail_by_slug' post.slug %}"><h2 class="card-title">{{ post.title }}</h2></a>
+                            <a href="{% url 'post_detail_by_slug' post.slug %}"><h2 class="card-title mb-3">{{ post.title }}</h2></a>
                             <p class="card-text">
                                 <strong>{{ post.excerpt|safe|truncatechars:100 }}</strong>
+                            </p>
+                            <p>
+                                By <strong><a href="{% url 'profile' post.author.pk %}" class="general-link">{{ post.author|title }}</a></strong>
+                                {{ post.created_on|date:'M d, Y' }}
                             </p>
                             <hr />
                             <div class="row">
@@ -25,13 +29,10 @@
                                 </div>
                             </div>
                             {% if request.user.is_authenticated and request.user.is_staff %}
-                                <a href="{% url 'post_edit' post.slug %}" class="btn btn-success mb-2 mt-2">Edit</a>
+                                <a href="{% url 'post_edit' post.slug %}" class="btn btn-success mb-1 mt-3">Edit</a>
+                                <button type="button" class="btn btn-danger me-3 ms-3 mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-title="Delete Post" data-bs-body="Are you sure you want to delete thist Post?" data-bs-url="{% url 'post_delete' post.slug post.pk %}">Delete</button>
                             {% endif %}
                         </div>
-                        <p>
-                            By <strong><a href="{% url 'profile' post.author.pk %}" class="general-link">{{ post.author|title }}</a></strong>
-                            {{ post.created_on|date:'M d, Y' }}
-                        </p>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
@@ -45,12 +46,12 @@
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
                     <li>
-                        <a href="?page={{ page_obj.previous_number }}" class="page-link">&laquo; PREV</a>
+                        <a href="?page={{ page_obj.previous_number }}" class="btn btn-outline-primary">&laquo; PREV</a>
                     </li>
                 {% endif %}
                 {% if page_obj.has_next %}
                     <li>
-                        <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+                        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-primary">NEXT &raquo;</a>
                     </li>
                 {% endif %}
             </ul>

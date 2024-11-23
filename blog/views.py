@@ -1,11 +1,11 @@
 """ Import the necessary modules """
 from django.db.models import Q, Count
-from django.db.models.functions import Random
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.http import Http404, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -20,7 +20,7 @@ class PostList(ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     context_object_name = "posts"
-    paginate_by = 5
+    paginate_by = 3
 
     def get_queryset(self):
         query = self.request.GET.get("q")
@@ -29,10 +29,6 @@ class PostList(ListView):
         # If there's a search query, filter posts by title
         if query:
             return queryset.filter(Q(title__icontains=query)).order_by("-created_on")
-
-        # If the search form was submitted with an empty query (active query but blank input)
-        if self.request.GET.get("q") == "":
-            return queryset.order_by(Random())[:1]
 
         # If no query is provided, show all posts
         return queryset.order_by("-created_on")
@@ -47,7 +43,7 @@ class DraftPostList(LoginRequiredMixin, UserPassesTestMixin, ListView):
     template_name = "blog/draft_posts.html"
     model = Post
     context_object_name = "drafts"
-    paginate_by = 5
+    paginate_by = 3
 
     def get_queryset(self):
         return Post.objects.filter(status=0, author=self.request.user).order_by(
@@ -106,6 +102,15 @@ def post_detail(request, pk=None, slug=None):
             "comment_form": comment_form,
         },
     )
+
+
+@login_required
+def publish_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.status = 1  # Assuming 1 is the status for published
+    post.save()
+    # Redirect to the draft posts page or any other page
+    return redirect('draft_posts')
 
 
 class CreatePost(LoginRequiredMixin, UserPassesTestMixin, CreateView):
