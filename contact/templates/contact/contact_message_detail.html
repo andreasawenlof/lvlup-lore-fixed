@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+    Contact Message
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 mb-5 d-flex flex-column flex-nowrap justify-content-center">
+        <h1 class="mb-4 text-center">Contact Message</h1>
+        <div class="container d-flex flex-column flex-nowrap justify-content-center mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ contact.name }}</h5>
+                    <p class="card-subtitle text-muted">{{ contact.email }}</p>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Subject: {{ contact.subject }}</h6>
+                    <p class="card-text">{{ contact.message }}</p>
+                    <p class="card-text">
+                        <small class="text-muted">Received on: {{ contact.created_on }}</small>
+                    </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="{% url 'contact_messages' %}" class="btn btn-secondary btn-sm">Back to List</a>
+                    {% if not contact.read %}
+                        <a href="{% url 'contact_toggle_read' contact.id %}" class="btn btn-danger btn-sm">Mark to Read</a>
+                    {% else %}
+                        <a href="{% url 'contact_toggle_read' contact.id %}" class="btn btn-success btn-sm">Mark to Unread</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Contact Messages
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 mb-5 d-flex flex-column flex-nowrap justify-content-center">
+        <h1 class="mb-4 text-center">Contact Messages</h1>
+        <div class="container d-flex flex-column flex-nowrap justify-content-center mt-3">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                        <tr class="{% if contact.read %}
+                                
+                                
+                                
+                                
+                                table-success
+
+
+
+
+                            {% else %}
+                                
+                                
+                                
+                                
+                                table-warning
+
+
+
+
+                            {% endif %}">
+                            <th scope="row">{{ contact.id }}</th>
+                            <td>{{ contact.name }}</td>
+                            <td>{{ contact.email }}</td>
+                            <td>
+                                <a href="{% url 'contact_message_detail' contact.pk %}">{{ contact.subject }}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'contact_message_detail' contact.pk %}">{{ contact.message }}</a>
+                            </td>
+                            <td>{{ contact.created_on }}</td>
+                            <td>
+                                {% if not contact.read %}
+                                    <a href="{% url 'contact_toggle_read' contact.id %}" class="btn btn-danger btn-sm">Mark to Read</a>
+                                {% else %}
+                                    <a href="{% url 'contact_toggle_read' contact.id %}" class="btn btn-success btn-sm">Mark to Unread</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
