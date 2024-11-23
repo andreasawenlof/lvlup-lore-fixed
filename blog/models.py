@@ -29,7 +29,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
     excerpt = models.TextField(blank=False, null=False)
     image = CloudinaryField("image", null=False,
-                            blank=False, default="default-post.wepb")
+                            blank=False)
     image_alt = models.CharField(
         max_length=100, null=False, blank=False, default="Describe the image"
     )

@@ -8,8 +8,8 @@
     <div class="container p-4">
         <div class="profile">
             <div class="info">
-                <div class="profile-img text-center">
-                    <img class="card-img-top w-50" src="{% static 'icons/profile-placeholder.webp' %}" alt="placeholder image" />
+                <div class="profile-img">
+                    <img class="card-img-top w-50 mb-3" src="{% static 'icons/profile-placeholder.webp' %}" alt="placeholder image" />
                 </div>
                 <h1>{{ profile.user.username }}</h1>
                 <p>
@@ -21,7 +21,7 @@
                 <hr />
                 <ul>
                     {% for post in commented_posts %}
-                        <li>
+                        <li class="list-unstyled">
                             <strong><a href="{% url 'post_detail_by_slug' post.slug %}" class="author-link">{{ post.title }}</a></strong>
                         </li>
                     {% empty %}
