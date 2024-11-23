@@ -9,11 +9,7 @@
         <div class="profile">
             <div class="info">
                 <div class="profile-img text-center">
-                    {% if profile.img.url is not null %}
-                        <img src="{{ profile.image.url }}" alt="{{ profile.user.username }}'s profile image" />
-                    {% else %}
-                        <img src="{% static '/icons/profile-placeholder.webp' %}" alt="This is a placeholder Avatar" />
-                    {% endif %}
+                    <img class="card-img-top w-50" src="{% static 'icons/profile-placeholder.webp' %}" alt="placeholder image" />
                 </div>
                 <h1>{{ profile.user.username }}</h1>
                 <p>

@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from django_resized import ResizedImageField
+from cloudinary.models import CloudinaryField
 from .utils import generate_unique_slug
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -11,7 +11,8 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Post(models.Model):
     """Defining Post Model"""
 
-    title = models.CharField(max_length=200, unique=True, blank=False, null=False)
+    title = models.CharField(
+        max_length=200, unique=True, blank=False, null=False)
     slug = models.SlugField(
         max_length=200,
         unique=True,
@@ -24,19 +25,11 @@ class Post(models.Model):
         related_name="blog_posts",
         editable=False,
     )
-    content = models.TextField()
+    content = models.TextField(blank=False, null=False)
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
     excerpt = models.TextField(blank=False, null=False)
-    image = ResizedImageField(
-        size=[400, None],
-        quality=75,
-        upload_to="blog/images",
-        force_format="WEBP",
-        default="images/logo/logo6.webp",
-        blank=False,
-        null=False,
-        max_length=100,
-    )
+    image = CloudinaryField("image", null=False,
+                            blank=False, default="default-post.wepb")
     image_alt = models.CharField(
         max_length=100, null=False, blank=False, default="Describe the image"
     )

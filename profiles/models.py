@@ -5,21 +5,17 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django_resized import ResizedImageField
+from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
     """Profile model"""
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = ResizedImageField(
-        size=[300, 300],
-        quality=75,
-        upload_to="profiles/",
-        force_format="WEBP",
-        blank=False,
-    )
+    image = CloudinaryField(
+        "image", default="placeholder", blank=False, null=False)
     bio = models.TextField(max_length=2500, null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
         return f"{self.user}"

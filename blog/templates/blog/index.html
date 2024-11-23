@@ -29,7 +29,7 @@
                             {% endif %}
                         </div>
                         <p>
-                            By <strong><a href="{% url 'profile' post.author.pk %}" class="author-link">{{ post.author|title }}</a></strong>
+                            By <strong><a href="{% url 'profile' post.author.pk %}" class="general-link">{{ post.author|title }}</a></strong>
                             {{ post.created_on|date:'M d, Y' }}
                         </p>
                     </div>
