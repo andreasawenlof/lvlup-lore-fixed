@@ -145,11 +145,12 @@ footer {
     text-decoration: none;
 }
 
-.author-link {
+.general-link {
     color: var(--link-blue);
     text-decoration: none;
+    font-weight: 700;
 }
-.author-link:hover {
+.general-link:hover {
     text-decoration: underline;
 }
 

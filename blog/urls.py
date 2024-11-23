@@ -8,13 +8,15 @@ from .views import (
     DeletePost,
     DraftPostList,
     delete_comment,
-    edit_comment
+    edit_comment,
+    publish_post
 )
 
 urlpatterns = [
     path("", PostList.as_view(), name="home"),
     path("post/<int:pk>/", post_detail, name="post_detail_by_pk"),
     path("post/<slug:slug>/", post_detail, name="post_detail_by_slug"),
+    path('post/publish/<int:pk>/', publish_post, name='publish_post'),
     path("post/create", CreatePost.as_view(), name="post_create"),
     path("post/<slug:slug>/edit/", EditPost.as_view(), name="post_edit"),
     path(

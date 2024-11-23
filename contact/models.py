@@ -1,3 +1,17 @@
+""" This module contains the Contact model. """
 from django.db import models
 
-# Create your models here.
+
+class Contact(models.Model):
+    """ Model to store contact form submissions """
+    name = models.CharField(max_length=200, blank=False, null=False)
+    subject = models.CharField(max_length=100, blank=False, null=False)
+    email = models.EmailField(blank=False, null=False)
+    message = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    read = models.BooleanField(default=False)
+
+    objects = models.Manager()
+
+    def __str__(self):
+        return f"Message from {self.name}"

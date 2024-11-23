@@ -1,7 +1,11 @@
+""" This file contains the form for the contact page. """
 from django import forms
+from .models import Contact
 
 
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=100, label="Your Name")
-    email = forms.EmailField(label="Your Email")
-    message = forms.CharField(widget=forms.Textarea, label="Your Message")
+class ContactForm(forms.ModelForm):
+    """ Form to handle contact form submissions """
+    class Meta:
+        """ Meta class for the ContactForm class """
+        model = Contact
+        fields = ['name', 'email', 'message']
