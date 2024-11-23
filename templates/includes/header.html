@@ -52,6 +52,9 @@
                             <li class="nav-item">
                                 <a class="nav-link {% if url_name == 'accounts_login' %}active{% endif %}" href="/accounts/login/">Log In</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact Us</a>
+                            </li>
                         {% endif %}
                     </ul>
                     <!-- Form for searchbar -->
