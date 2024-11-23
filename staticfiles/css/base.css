@@ -158,6 +158,10 @@ footer {
     color: --var(--link-blue);
 }
 
+.row-click {
+    cursor: pointer;
+}
+
 
 
 /* Logo */
