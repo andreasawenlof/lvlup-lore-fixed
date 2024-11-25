@@ -31,10 +31,9 @@
                 </div>
             </div>
         </div>
-
         <div class="container">
             <p class="card-text">{{ post.content|safe }}</p>
-            <div class="column post-detail-body">
+            <div class="column post-detail-body pb-2">
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
                 {% if request.user.is_authenticated and request.user.is_staff %}
@@ -46,7 +45,7 @@
                 {% endif %}
             </div>
             <!-- Displaying count of comments -->
-            <div class="row">
+            <div class="row {% if post.status == 0 %}d-none{% endif %}">
                 <div class="col-12">
                     <strong class="text-secondary"><i class="far fa-comments mt-4"></i> {{ comment_count }}</strong>
                 </div>
@@ -55,7 +54,7 @@
                 </div>
             </div>
             <!-- Displaying Comments -->
-            <div class="row">
+            <div class="row {% if post.status == 0 %}d-none{% endif %}">
                 <div class="col-md-8 card mb-4 mt-3 me-3 {% if comment_count == 0 %}d-none{% endif %}">
                     <h3 class="mt-4 ms-2">Comments:</h3>
                     <div class="card-body">
