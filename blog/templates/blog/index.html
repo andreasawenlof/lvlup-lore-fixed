@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load custom_filters %}
 
 {% block title %}
     Home
@@ -18,13 +19,17 @@
                             <p class="card-text">
                                 <strong>{{ post.excerpt|safe|truncatechars:100 }}</strong>
                             </p>
-                            <p>
-                                By <strong><a href="{% url 'profile' post.author.pk %}" class="general-link">{{ post.author|title }}</a></strong>
-                                {{ post.created_on|date:'M d, Y' }}
-                            </p>
                             <hr />
-                            <div class="row">
-                                <div class="col-3 mb-3">
+                            <div class="d-flex flex-row justify-content-between">
+                                <p class="text-start ms-3">
+                                    By <strong><a href="{% url 'profile' post.author.pk %}" class="general-link">{{ post.author|title }}</a></strong>
+                                    {% if post.status == 0 %}
+                                        Created on (Not Published): {{ post.created_on|custom_timesince }}
+                                    {% else %}
+                                        {{ post.published_date|custom_timesince }}
+                                    {% endif %}
+                                </p>
+                                <div class="col-3 mb-3 text-end me-3">
                                     <strong class="text-secondary"><i class="far fa-comments"></i> {{ post.comment_count }}</strong>
                                 </div>
                             </div>

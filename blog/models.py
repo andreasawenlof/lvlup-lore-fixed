@@ -27,6 +27,8 @@ class Post(models.Model):
     )
     content = models.TextField(blank=False, null=False)
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_on = models.DateTimeField(auto_now=True, editable=False)
+    published_date = models.DateTimeField(auto_now=True, editable=False)
     excerpt = models.TextField(blank=False, null=False)
     image = CloudinaryField("image", null=False,
                             blank=False)

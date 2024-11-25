@@ -1,17 +1,15 @@
 """ Import the necessary modules """
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q, Count
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.utils import timezone
 from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-
-
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
-from .models import Post, Comment
 from .forms import PostForm, CommentForm
+from .models import Post, Comment
 
 
 class PostList(ListView):
@@ -107,10 +105,17 @@ def post_detail(request, pk=None, slug=None):
 @login_required
 def publish_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.status = 1  # Assuming 1 is the status for published
-    post.save()
+    if post.status == 0:  # Assuming 0 is the status for drafts
+        post.status = 1  # Assuming 1 is the status for published
+        post.published_date = timezone.now()
+        post.save()
+        messages.success(request, f"The post '{
+                         post.title}' was published successfully.")
+    else:
+        messages.info(request, f"The post '{
+                      post.title}' is already published.")
     # Redirect to the draft posts page or any other page
-    return redirect('draft_posts')
+    return redirect('home')
 
 
 class CreatePost(LoginRequiredMixin, UserPassesTestMixin, CreateView):
@@ -126,7 +131,21 @@ class CreatePost(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super(CreatePost, self).form_valid(form)
+        if form.instance.status == 1:  # Assuming 1 is the status for published
+            form.instance.published_date = timezone.now()
+        response = super().form_valid(form)
+        if form.instance.status == 0:  # Assuming 0 is the status for drafts
+            messages.success(
+                self.request, "The post was saved as a draft. You can publish it from the draft list page.")
+        else:
+            messages.success(
+                self.request, "The post was published successfully.")
+        return response
+
+    def form_invalid(self, form):
+        messages.error(
+            self.request, "There was an error creating the post. Please check the form and try again.")
+        return super().form_invalid(form)
 
 
 class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -144,6 +163,28 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         context["post"] = self.get_object()
         return context
 
+    def form_valid(self, form):
+        # Ensure the author remains unchanged
+        form.instance.author = self.get_object().author
+        if form.instance.status == 1 and not form.instance.published_date:  # Set published_date if not already set
+            form.instance.published_date = timezone.now()
+        # Set the updated_date field
+        # Ensure the author remains unchanged
+        form.instance.author = self.get_object().author
+        response = super().form_valid(form)
+        if form.instance.status == 0:  # Assuming 0 is the status for drafts
+            messages.success(
+                self.request, "The post was updated and saved as a draft. You can publish it from the draft list page.")
+        else:
+            messages.success(
+                self.request, "The post was updated and published successfully.")
+        return response
+
+    def form_invalid(self, form):
+        messages.error(
+            self.request, "There was an error updating the post. Please check the form and try again.")
+        return super().form_invalid(form)
+
     def get_success_url(self):
         post = self.object
         if post.status == 0:
@@ -160,6 +201,17 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.is_staff
+
+    def delete(self, request, *args, **kwargs):
+        post = self.get_object()
+        response = super().delete(request, *args, **kwargs)
+        if response.status_code == 302:  # Check if the response is a redirect
+            messages.success(request, f"The post '{
+                             post.title}' was deleted successfully.")
+        else:
+            messages.error(
+                request, "An error occurred while deleting the post.")
+        return redirect(self.success_url)
 
 
 def edit_comment(request, slug, comment_id):
