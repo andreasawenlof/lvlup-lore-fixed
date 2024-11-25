@@ -21,9 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.path.exists("env.py"):
     import env
 
-# Default to 'DENY' if not set
-X_FRAME_OPTIONS = os.getenv('X_FRAME_OPTIONS', 'DENY')
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
