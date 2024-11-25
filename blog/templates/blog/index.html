@@ -44,6 +44,9 @@
 
                 {% endif %}
             {% endfor %}
+            {% else %}
+            <p class="text-center">Search not found</p>
+            {% endif %}
         </div>
     </div>
     {% if is_paginated %}
