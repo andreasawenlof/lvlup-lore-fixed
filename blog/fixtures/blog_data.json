@@ -1,78 +1,87 @@
 [
-    {
+  {
       "model": "blog.post",
       "pk": null,
       "fields": {
-        "title": "Review: Horizon Zero Dawn Remaster",
-        "slug": "review-horizon-zero-dawn-remaster",
-        "author": 1,
-        "content": "The Horizon Zero Dawn Remaster brings stunning visuals and smoother gameplay, making an already great game even better.",
-        "created_on": "2024-11-20T15:30:00Z",
-        "excerpt": "A remaster that redefines Aloy's journey in spectacular fashion.",
-        "image": "images/horizon.webp",
-        "image_alt": "Aloy standing with her bow in Horizon Zero Dawn Remaster",
-        "status": 1
+          "title": "Review: Horizon Zero Dawn Remaster",
+          "slug": "review-horizon-zero-dawn-remaster",
+          "author": 1,
+          "content": "The Horizon Zero Dawn Remaster is nothing short of breathtaking. With enhanced 4K visuals, improved lighting effects, and silky-smooth 60fps gameplay, Guerrilla Games has transformed an already stunning masterpiece into an even more immersive experience. The rich landscapes of the game world, from the lush forests to the arid deserts, are more vivid than ever, pulling you deeper into Aloy's journey.\n\nGameplay-wise, the remaster retains the tight mechanics that made the original so enjoyable while adding subtle quality-of-life improvements, like faster load times and improved character animations. While some fans may feel a remaster was unnecessary, this version is undoubtedly the definitive way to play. It not only reintroduces Aloy's story to new audiences but also gives long-time fans a reason to revisit her world.",
+          "created_on": "2024-11-20T15:30:00Z",
+          "updated_on": "2024-11-20T15:30:00Z",
+          "published_date": "2024-11-20T15:30:00Z",
+          "excerpt": "A remaster that redefines Aloy's journey in spectacular fashion.",
+          "image": "static/images/horizon.webp",
+          "image_alt": "Aloy standing with her bow in Horizon Zero Dawn Remaster",
+          "status": 1
       }
-    },
-    {
+  },
+  {
       "model": "blog.post",
       "pk": null,
       "fields": {
-        "title": "Elder Scrolls VI: What We Know So Far",
-        "slug": "elder-scrolls-vi-what-we-know-so-far",
-        "author": 2,
-        "content": "Bethesda has teased fans with minimal information, but here’s a breakdown of what we know about the next Elder Scrolls game.",
-        "created_on": "2024-11-19T12:45:00Z",
-        "excerpt": "Breaking down the latest news and rumors on Elder Scrolls VI.",
-        "image": "images/elder_scrolls.webp",
-        "image_alt": "Concept art for Elder Scrolls VI",
-        "status": 1
+          "title": "Elder Scrolls VI: What We Know So Far",
+          "slug": "elder-scrolls-vi-what-we-know-so-far",
+          "author": 2,
+          "content": "Anticipation for Elder Scrolls VI has reached fever pitch, even though Bethesda has remained tight-lipped about the game. The brief teaser trailer released at E3 2018 showed a sweeping landscape that left fans scrambling to dissect every frame for clues. So far, the developers have confirmed that the game will use the revamped Creation Engine 2, promising a significant leap in graphical fidelity and world-building.\n\nSpeculation abounds regarding the setting, with many believing it will take place in Hammerfell, the homeland of the Redguards. If true, this will offer players a rich tapestry of deserts, coastal regions, and bustling trade hubs. However, the biggest question remains: How will Bethesda innovate on the open-world formula that Skyrim revolutionized over a decade ago? One thing is certain—whenever it arrives, Elder Scrolls VI will carry the weight of monumental expectations.",
+          "created_on": "2024-11-19T12:45:00Z",
+          "updated_on": "2024-11-19T12:45:00Z",
+          "published_date": "2024-11-19T12:45:00Z",
+          "excerpt": "Breaking down the latest news and rumors on Elder Scrolls VI.",
+          "image": "static/images/elder_scrolls.webp",
+          "image_alt": "Concept art for Elder Scrolls VI",
+          "status": 1
       }
-    },
-    {
+  },
+  {
       "model": "blog.post",
       "pk": null,
       "fields": {
-        "title": "The Rise of Stealth Gameplay in Modern Gaming",
-        "slug": "rise-of-stealth-gameplay",
-        "author": 3,
-        "content": "From Assassin’s Creed to Hitman, stealth mechanics have become a cornerstone of modern games. Here’s why they matter.",
-        "created_on": "2024-11-18T10:15:00Z",
-        "excerpt": "Exploring why stealth gameplay resonates with players and developers alike.",
-        "image": "images/stealth.webp",
-        "image_alt": "A character hiding in shadows in a stealth game",
-        "status": 1
+          "title": "The Rise of Stealth Gameplay in Modern Gaming",
+          "slug": "rise-of-stealth-gameplay",
+          "author": 3,
+          "content": "Stealth mechanics have become a cornerstone of modern gaming, evolving from a niche genre into a beloved gameplay element across titles. Games like Assassin's Creed, Dishonored, and the Hitman series have popularized the art of sneaking, offering players a unique blend of strategy and immersion. But why does stealth resonate so strongly with players?\n\nAt its core, stealth gameplay rewards patience, planning, and precision. It gives players the satisfaction of outsmarting their enemies without resorting to brute force. The rise of sandbox stealth games has also allowed for unprecedented creativity, with titles like Metal Gear Solid V enabling players to approach missions in myriad ways. As developers continue to refine these mechanics, stealth is no longer just an optional playstyle—it’s a testament to the growing sophistication of gaming as a medium.",
+          "created_on": "2024-11-18T10:15:00Z",
+          "updated_on": "2024-11-18T10:15:00Z",
+          "published_date": "2024-11-18T10:15:00Z",
+          "excerpt": "Exploring why stealth gameplay resonates with players and developers alike.",
+          "image": "static/images/stealth.webp",
+          "image_alt": "A character hiding in shadows in a stealth game",
+          "status": 1
       }
-    },
-    {
+  },
+  {
       "model": "blog.post",
       "pk": null,
       "fields": {
-        "title": "Cyberpunk 2077: Phantom Liberty Review",
-        "slug": "cyberpunk-2077-phantom-liberty-review",
-        "author": 2,
-        "content": "The Phantom Liberty DLC breathes new life into Cyberpunk 2077 with a compelling storyline and impactful choices.",
-        "created_on": "2024-11-17T14:00:00Z",
-        "excerpt": "CD Projekt Red delivers an exceptional expansion for Cyberpunk 2077.",
-        "image": "images/cyberpunk.webp",
-        "image_alt": "Key art for Cyberpunk 2077 Phantom Liberty",
-        "status": 1
+          "title": "Cyberpunk 2077: Phantom Liberty Review",
+          "slug": "cyberpunk-2077-phantom-liberty-review",
+          "author": 2,
+          "content": "Phantom Liberty, the much-anticipated expansion for Cyberpunk 2077, takes everything that made the base game polarizing and turns it on its head. With Idris Elba joining the cast, the DLC delivers a gritty espionage thriller that adds depth to Night City’s lore. The choices you make in this expansion carry significant weight, with branching paths and multiple endings that enhance replayability.\n\nGameplay improvements are evident, with smoother mechanics and fewer bugs, addressing many of the criticisms aimed at the original release. Phantom Liberty isn't just a redemption arc for CD Projekt Red—it’s a bold statement that Cyberpunk 2077’s potential has finally been realized. Whether you're a returning player or a newcomer, this expansion is a must-play.",
+          "created_on": "2024-11-17T14:00:00Z",
+          "updated_on": "2024-11-17T14:00:00Z",
+          "published_date": "2024-11-17T14:00:00Z",
+          "excerpt": "CD Projekt Red delivers an exceptional expansion for Cyberpunk 2077.",
+          "image": "static/images/cyberpunk.webp",
+          "image_alt": "Key art for Cyberpunk 2077 Phantom Liberty",
+          "status": 1
       }
-    },
-    {
+  },
+  {
       "model": "blog.post",
       "pk": null,
       "fields": {
-        "title": "Gaming News: The Game Awards 2024 Nominees Announced",
-        "slug": "game-awards-2024-nominees",
-        "author": 1,
-        "content": "The Game Awards 2024 nominees include titles like Starfield, Baldur's Gate 3, and Spider-Man 2. Here’s the full list.",
-        "created_on": "2024-11-16T18:30:00Z",
-        "excerpt": "Celebrating the best in gaming: The Game Awards 2024 nominees.",
-        "image": "images/game_awards_2024.webp",
-        "image_alt": "The Game Awards 2024 logo",
-        "status": 1
+          "title": "Gaming News: The Game Awards 2024 Nominees Announced",
+          "slug": "game-awards-2024-nominees",
+          "author": 1,
+          "content": "The Game Awards 2024 has officially announced its nominees, and this year’s lineup is nothing short of spectacular. Leading the pack are Baldur's Gate 3, Starfield, and Spider-Man 2, all of which have garnered critical acclaim for their innovation and storytelling. This year's event promises a mix of expected winners and dark horse surprises, ensuring a thrilling night for fans and developers alike.\n\nCategories include Game of the Year, Best Art Direction, and Best Indie Game, with indie darling Dave the Diver earning several nominations. Hosted by Geoff Keighley, the ceremony will also feature exclusive trailers and surprise announcements. Tune in to celebrate the best in gaming and catch a glimpse of what’s coming next in the industry.",
+          "created_on": "2024-11-16T18:30:00Z",
+          "updated_on": "2024-11-16T18:30:00Z",
+          "published_date": "2024-11-16T18:30:00Z",
+          "excerpt": "Celebrating the best in gaming: The Game Awards 2024 nominees.",
+          "image": "static/images/game_awards_2024.webp",
+          "image_alt": "The Game Awards 2024 logo",
+          "status": 1
       }
-    }
-  ]
-  
+  }
+]

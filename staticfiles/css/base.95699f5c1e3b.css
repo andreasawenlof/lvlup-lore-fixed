@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    /* Fonts */
+    --title: 'Press Start 2P', serif;
+    --main-font: 'Roboto', serif;
+
+    /* Colors */
+    --link-blue: #3348bd;
+    --dark-background: #251e1e;
+    --background: #e6e2e2;
+    --black: #000;
+    --white: #fff;
+    --hover-bright: #7b7979;
+    --blue: #0a0c32;
+
+
+    /* Utils */
+    --smal-box-shadow: 1px -1px 7px 0 #0000006e;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
+    background-color: #ada8a8;
+}
+
+h1, h2, h3, h5, h6 {
+    font-family: var(--title);
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+h3 {
+    font-family: var(--main-font);
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: #ada8a8;
+    margin-top: 7rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* .title-card {
+    text-shadow: var(--smal-box-shadow);
+    width: 100%;
+} */
+
+/* Header */
+.navbar {
+    background-color: var(--background);
+    box-shadow: var(--smal-box-shadow);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+a.nav-link {
+    color: var(--black);
+    font-family: var(--main-font);
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.5em;
+}
+
+a.nav-link:hover {
+    color: var(--hover-bright);
+}
+
+img.logo {
+    width: 10rem;
+}
+
+.active {
+    border-bottom: 2px solid var(--blue);
+    font-weight: 500;
+}
+
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: var(--border);
+}
+
+.social-icon {
+    height: 2rem;
+    margin: 1rem;
+}
+
+/* Form */
+
+.form {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--small-box-shadow);
+}
+
+.card {
+    border-radius: 12px;
+    width: 22rem;
+    background-color: var(--white);
+    box-shadow: var(--smal-box-shadow);
+}
+
+.card img:hover {
+    filter: brightness(70%);
+    transition: filter 0.3s ease;
+}
+
+.card-title {
+    color: var(--black);
+    text-decoration: none;  
+}
+
+.card-title:hover {
+    text-decoration: underline;
+}
+
+.card-body .btn {
+    box-shadow: var(--smal-box-shadow);
+    width: 80%;
+}
+.card-body .btn:hover {
+    color: var(--background);
+    text-decoration: none;
+}
+.post-detail-body .btn {
+    box-shadow: var(--smal-box-shadow);
+    width: 80%;
+}
+.post-detail-body .btn:hover {
+    color: var(--background);
+    text-decoration: none;
+}
+.contact-form .btn {
+    box-shadow: var(--smal-box-shadow);
+    width: 80%;
+}
+.contact-form .btn:hover {
+    color: var(--background);
+    text-decoration: none;
+}
+
+.general-link {
+    color: var(--link-blue);
+    text-decoration: none;
+    font-weight: 700;
+}
+.general-link:hover {
+    text-decoration: underline;
+}
+
+.title-link {
+    color: var(--link-blue);
+}
+
+.row-click {
+    cursor: pointer;
+}
