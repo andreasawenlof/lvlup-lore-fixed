@@ -109,6 +109,7 @@ def post_detail(request, pk=None, slug=None):
 
 @login_required
 def publish_post(request, pk):
+    """ Publish a draft post """
     post = get_object_or_404(Post, pk=pk)
     if post.status == 0:  # Assuming 0 is the status for drafts
         post.status = 1  # Assuming 1 is the status for published
@@ -193,9 +194,9 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def get_success_url(self):
         post = self.object
         if post.status == 0:
-            return reverse_lazy("post_detail_by_pk", kwargs={"pk": post.pk})
+            return reverse_lazy("draft_posts")
         else:
-            return reverse_lazy("post_detail_by_slug", kwargs={"slug": post.slug})
+            return reverse_lazy("home")
 
 
 class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
