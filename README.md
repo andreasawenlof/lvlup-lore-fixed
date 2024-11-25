@@ -1,131 +1,225 @@
-# Gaming Blog - LVL-UP Lore
+# LVL-UP Lore
 
-## Project Overview
-LVLUP Lore is a gaming Blog for nerds where they can hear about the laste news and share theigh thoughts.
+Welcome to **LVL-UP Lore**, a gaming blog where admins can share gaming-related posts, and users can engage through comments. This project emphasizes delivering core functionality with a clean, responsive interface. The platform fosters open discussions while ensuring respectful interactions.
 
-[Live Site](<insert-live-site-link>) | [GitHub Repository](<insert-repo-link>)
+![Homepage Screenshot Placeholder](path-to-image/homepage.png)
 
 ---
 
 ## Table of Contents
-- [Gaming Blog - LVL-UP Lore](#gaming-blog---lvl-up-lore)
-  - [Project Overview](#project-overview)
+
+- [LVL-UP Lore](#lvl-up-lore)
   - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Technologies Used](#technologies-used)
-  - [Agile Development](#agile-development)
+  - [Purpose and Demographic](#purpose-and-demographic)
   - [UX Design](#ux-design)
-  - [Testing](#testing)
-  - [Setup Instructions](#setup-instructions)
+    - [The Strategy](#the-strategy)
+      - [**Project Goals**](#project-goals)
+      - [**User Stories**](#user-stories)
+    - [The Scope](#the-scope)
+      - [**Features Included**](#features-included)
+      - [**Features Excluded**](#features-excluded)
+    - [The Skeleton (Wireframes)](#the-skeleton-wireframes)
+  - [Features](#features)
+    - [Header Navigation](#header-navigation)
+    - [Search Bar](#search-bar)
+  - [Design Choices](#design-choices)
+    - [**Typography**](#typography)
+    - [**Color Scheme**](#color-scheme)
+    - [**Interactive Elements**](#interactive-elements)
+  - [Database Design](#database-design)
+    - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
+  - [Future Features](#future-features)
+  - [Deployment](#deployment)
 
 ---
 
-## Features
+## Purpose and Demographic
 
-<details>
-<summary>Implemented Features</summary>
+**LVL-UP Lore** is designed for:
+- **Gaming enthusiasts** who want to stay updated on gaming trends.
+- **Users** who want to express their opinions freely while adhering to respectful interactions.
+- **Admins** or **content creators** who require easy-to-use tools for managing blog posts and moderating user activity.
 
-1. **Admin-Created Posts**: Admins can create, edit, and delete gaming-related posts.
-2. **User Comments**: Logged-in users can comment on posts.
-3. **User Authentication**: Users can register, log in, and log out.
-4. **User Profiles**: Users can edit their profile details.
-5. **Post and Comment Moderation**: Admins can manage inappropriate content.
-
-</details>
-
-<details>
-<summary>Future Features</summary>
-
-- Search functionality for posts.
-- Filtering posts by categories or tags.
-- Like or upvote system for posts.
-- Integration of external gaming APIs (e.g., latest game news).
-
-</details>
-
----
-
-## Technologies Used
-
-<details>
-<summary>Languages</summary>
-
-- Python
-- HTML
-- CSS
-- JavaScript
-
-</details>
-
-<details>
-<summary>Frameworks and Libraries</summary>
-
-- Django
-- Bootstrap
-
-</details>
-
-<details>
-<summary>Other Tools</summary>
-
-- Cloudinary: For media hosting.
-- GitHub Projects: For task management.
-- Figma: For designing wireframes.
-
-</details>
-
----
-
-## Agile Development
-
-<details>
-<summary>Development Process</summary>
-
-- Managed tasks using a [Kanban board](<insert-kanban-board-link>).
-- Prioritized user stories, including:
-  - "As a user, I want to comment on posts so that I can share my opinions."
-  - "As an admin, I want to manage posts and comments to maintain quality content."
-
-</details>
+![Target Audience Screenshot Placeholder](path-to-image/target-audience.png)
 
 ---
 
 ## UX Design
 
-<details>
-<summary>Five Planes of UX</summary>
+### The Strategy
 
-1. **Strategy**: Provide a platform for admins to share gaming content and users to engage with posts.
-2. **Scope**: Includes core blog functionality while excluding advanced features like analytics.
-3. **Structure**: Logical flow: **Home > Post Details > Login/Comment**.
-4. **Skeleton**: Wireframes for major pages (e.g., home, post details).
-   - [Wireframes Link](<insert-link>)
-5. **Surface**: Clean, responsive design with Bootstrap and gaming-themed colors.
+<details>
+<summary>Click to expand</summary>
+
+#### **Project Goals**
+1. Build a platform where users can access gaming-related posts and interact with them.
+2. Provide admins with tools for managing content effectively, including posts, comments, and feedback.
+3. Deliver a responsive, visually appealing site for users across all devices.
+
+#### **User Stories**
+- **As a user**, I want to:
+  - Browse gaming-related posts.
+  - Comment on posts and edit or delete my own comments.
+  - Search for posts based on their titles.
+  - View user profiles, including my own.
+- **As an admin**, I want to:
+  - Create, edit, publish, or delete posts.
+  - Moderate user comments and manage drafts.
+  - Review and respond to inquiries from the contact form.
 
 </details>
 
 ---
 
-## Testing
+### The Scope
 
 <details>
-<summary>Testing Overview</summary>
+<summary>Click to expand</summary>
 
-- **Manual Testing**: Tested all features, including post creation, commenting, and user authentication.
-- **Browser Testing**: Verified responsiveness across desktop, tablet, and mobile devices.
-- **Bug Fixes**: Fixed layout issues in the comment section.
+#### **Features Included**
+1. **Header Navigation**:
+   - Role-based links for guests, logged-in users, and admins.
+   - Links include: Home, Profile, Login, Logout, and Contact Us.
 
-For detailed test cases, see [TEST.md](<insert-link>).
+2. **CRUD Operations**:
+   - Admins can create, edit, delete, and manage drafts of posts.
+
+3. **Comments**:
+   - Users can add, edit, and delete their own comments.
+
+4. **Profiles**:
+   - User profiles include bio and activity (e.g., posts they’ve commented on). Users can check other profiles.
+
+5. **Search Bar**:
+   - Users can search for posts by title, with instant results.
+
+6. **Contact Form**:
+   - Users can send inquiries directly to admins.
+
+7. **Responsiveness**:
+   - Fully functional on desktop, tablet, and mobile.
+
+#### **Features Excluded**
+1. Advanced search (e.g., by category, author, or post content).
+2. Dark mode (planned for future implementation).
+3. AJAX functionality for real-time search and comment updates.
 
 </details>
 
 ---
 
-## Setup Instructions
+### The Skeleton (Wireframes)
 
 <details>
-<summary>Local Development</summary>
+<summary>Click to expand</summary>
 
-1. Clone the repository:  
+- **Homepage Wireframe**:
+  - Features a hero section and a list of posts in card format.
+  - Cards display the post title, image, excerpt, and author details.
+  - Includes a navigation bar and a search bar.
+
+![Homepage Wireframe Placeholder](path-to-image/homepage-wireframe.png)
+
+- **Post Detail Page**:
+  - Displays the full post and includes a comment section.
+  - Comments can be added, edited, or deleted.
+
+![Post Detail Page Wireframe Placeholder](path-to-image/post-detail-wireframe.png)
+
+- **Profile Page Wireframe**:
+  - Displays the user’s avatar, bio, and list of interactions (e.g., list of posts that has been commented on).
+
+![Profile Page Wireframe Placeholder](path-to-image/profile-wireframe.png)
+
+</details>
+
+---
+
+## Features
+
+### Header Navigation
+
+- **Dynamic Navigation**:
+  - Guest: Home, Sign Up, Log In, Contact Us.
+  - Logged-In User: Automatic generated Profile and appeared Logout links.
+  - Admin: Adds Create Post, Drafts, and Contact Messages in a drowdown.
+
+![Header Navigation Screenshot Placeholder](path-to-image/header-navigation.png)
+
+---
+
+### Search Bar
+
+<details>
+<summary>Click to expand</summary>
+
+- **Functionality**:
+  - Allows users to search for posts by title.
+  - Displays "No results found" if no matches exist.
+  - Returns all posts for an empty search query.
+
+![Search Bar Screenshot Placeholder](path-to-image/search-bar.png)
+
+</details>
+
+---
+
+## Design Choices
+
+<details>
+<summary>Click to expand</summary>
+
+### **Typography**
+- **Roboto**: Used for body text for readability.
+- **Press Start 2P**: Used for titles and headers to enhance visual hierarchy. The blockiness goes with a retro gamer feel.
+
+### **Color Scheme**
+
+- **Primary Colors**: Neutral tones for backgrounds and text.
+- **Accent Colors**: Green highlights for buttons and links.
+
+### **Interactive Elements**
+- Hover effects on buttons and links.
+- Smooth transitions for modals (e.g., confirmations).
+
+![Design Choices Placeholder](path-to-image/design-choices.png)
+
+</details>
+
+## Database Design
+
+### Entity Relationship Diagram (ERD)
+
+<details>
+<summary>Click to expand</summary>
+
+The database includes:
+1. **User**: Manages authentication and user details.
+2. **Post**: Contains all blog post data.
+3. **Comment**: Tracks user comments and links them to posts.
+4. **Profile**: Stores user bios and avatars.
+
+![ERD Placeholder](path-to-image/erd.png)
+
+</details>
+
+---
+
+## Future Features
+
+<details>
+<summary>Click to expand</summary>
+
+1. **Dark Mode**: Automatic and manual toggle for light/dark themes.
+2. **Advanced Search**: Filter posts by content, category, or author.
+3. **AJAX Integration**: Real-time updates for search results and comments.
+
+</details>
+
+---
+
+## Deployment
+
+1. Clone the repository:
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/yourusername/lvl-up-lore.git

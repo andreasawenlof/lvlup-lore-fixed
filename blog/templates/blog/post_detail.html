@@ -16,7 +16,7 @@
                         <h1 class="post-title">{{ post.title }}</h1>
                         <!-- Post author goes before the | the post's created date goes after -->
                         <p class="post-subtitle">
-                            <strong>By {{ post.author|title }}</strong> &mdash;{% if post.status == 0 %}
+                            By <strong><a href="{% url 'profile' post.author.pk %}" class="general-link">{{ post.author|title }}</a></strong> &mdash;{% if post.status == 0 %}
                                 Created: {{ post.created_on|custom_timesince }}
                                 <br />
                                 <strong>Not Published</strong>
@@ -81,7 +81,7 @@
                 </div>
                 <!-- Creating New Comments -->
                 <div class="col-md-4 card mb-4 mt-3">
-                    <div class="card-body">
+                    <div class="card-body comment-create">
                         {% if user.is_authenticated %}
                             <h3>Leave a comment:</h3>
                             <p>Posting as: {{ user.username }}</p>
