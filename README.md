@@ -200,10 +200,10 @@ This project was managed using Agile principles, focusing on iterative developme
 
 ### **Typography**
 - **Roboto**: Used for body text for readability.
-![Roboto](static/images/readme-files/3a392fca77ce5bebf165216f7f5f30e4.png)
+![Roboto](static/images/readme-files/main-font.png)
 
 - **Press Start 2P**: Used for titles and headers to enhance visual hierarchy. The blockiness goes with a retro gamer feel.
-![Press Start 2P](static/images/readme-files/0311fe69e98b0a1ade4305203e5d1d46.png)
+![Press Start 2P](static/images/readme-files/title-font.png)
 
 ### **Color Scheme**
 
