@@ -29,6 +29,8 @@ Welcome to **LVL-UP Lore**, a gaming blog where admins can share gaming-related 
   - [Features](#features)
     - [Header Navigation](#header-navigation)
     - [Search Bar](#search-bar)
+    - [Admin Views](#admin-views)
+    - [Small details that adds to UX](#small-details-that-adds-to-ux)
   - [Design Choices](#design-choices)
     - [**Typography**](#typography)
     - [**Color Scheme**](#color-scheme)
@@ -123,21 +125,26 @@ This project was managed using Agile principles, focusing on iterative developme
 1. **Header Navigation**:
    - Role-based links for guests, logged-in users, and admins.
    - Links include: Home, Profile, Login, Logout, and Contact Us.
+   - Hamburger nav for smaller screens
+   - ![Hamburger Nav](static/images/readme-files/gifs/nav-hamburger.gif)
 
 2. **CRUD Operations**:
    - Admins can create, edit, delete, and manage drafts of posts.
+  ![Draft and Publish](static/images/readme-files/gifs/draft-publish.gif)
 
 3. **Comments**:
    - Users can add, edit, and delete their own comments.
-
+  ![Crud Comments](static/images/readme-files/gifs/comment-crud.gif)
 4. **Profiles**:
    - User profiles include bio and activity (e.g., posts they’ve commented on). Users can check other profiles.
+  ![Profile View](static/images/readme-files/Header-profile.png)
 
 5. **Search Bar**:
    - Users can search for posts by title, with instant results.
 
 6. **Contact Form**:
    - Users can send inquiries directly to admins.
+  ![Contact Form](static/images/readme-files/header-contactUs.png)
 
 7. **Responsiveness**:
    - Fully functional on desktop, tablet, and mobile.
@@ -170,7 +177,6 @@ This project was managed using Agile principles, focusing on iterative developme
 
 ### Search Bar
 
-<details>
 <summary>Click to expand</summary>
 
 - **Functionality**:
@@ -180,9 +186,23 @@ This project was managed using Agile principles, focusing on iterative developme
 ![Search Bar Screenshot Placeholder](static/images/readme-files/Search-no-found.png)
   - Returns all posts for an empty search query.
 
+---
 
-</details>
+### Admin Views
 
+<summary>Click to expand</summary>
+- **Functionality**:
+  - Admin can see a list of contact messages.
+  
+  - They can view a message in detail
+  - They can mark as read or mark as unread, when marked read button changes color and moves to the bottom of the unread messages. 
+  ![Contact Messages](static/images/readme-files/gifs/contact-form-message.gif)
+
+
+### Small details that adds to UX
+- Time is added through a custom filter where it's time since date. Time goes D < min < sec etc. 
+- When post is published in detail view post says: "published" but when draft post says "created" for clarity.
+- When user edits a post and makes a draft redirects to draft view. When publish redirect to home view.
 ---
 
 ## Design Choices
@@ -205,8 +225,13 @@ This project was managed using Agile principles, focusing on iterative developme
 
 ### **Interactive Elements**
 - Hover effects on buttons and links.
+![Hover Effects](static/images/readme-files/gifs/hover-fx.gif)
 - Smooth transitions for modals (e.g., confirmations).
-
+![Modal Logout](static/images/readme-files/gifs/modal-logout.gif)
+- Message Success or Errors for better User Experience and clarity.
+![Message section](static/images/readme-files/gifs/contact-form-message.gif)
+- Comment counter that keep track of comments and when the counter is under 1 the comment window disappears. And when at least one comment is there the windows appears.
+![Comment Section](static/images/readme-files/gifs/comment-section-update.gif)
 
 
 </details>
@@ -466,7 +491,7 @@ The app should now be deployed.
 
  I've also got very inspired by [Gamerant Gaming Website](https://gamerant.com/)
  I've used some advice from the PP4 example project. 
- The images I used from google images, just as placeholders to have some content, now i would never use this in a public website. 
+ The images I used from google images, just as placeholders to have some content, now i would never use this on a public website. 
 
  ## Thanks to:
  - My mentor Gareth
