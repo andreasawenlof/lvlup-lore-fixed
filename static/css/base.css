@@ -70,7 +70,7 @@ a {
 
 a.nav-link {
     color: var(--black);
-    font-family: var--(--main-font);
+    font-family: var(--main-font);
     padding-left: 0.5em;
     padding-top: 0.2em;
     padding-bottom: 0.5em;
@@ -170,35 +170,9 @@ footer {
 }
 
 .title-link {
-    color: --var(--link-blue);
+    color: var(--link-blue);
 }
 
 .row-click {
     cursor: pointer;
 }
-
-
-
-/* Logo */
-/* .navbar-brand {
-    width: 10%;
-    height: 10%;    
-}
-.navbar-brand .logo {
-    width: 100%;
-    height: 100%;
-} */
-
-/* Navbar */
-/* 
-.navbar {
-    background-color: var(--background);
-    height: 6rem;
-}
-.navbar a {
-    font-family: "Press Start 2P";
-    font-size: 1rem;
-    margin: 0 0.5em;
-    
-}
- */

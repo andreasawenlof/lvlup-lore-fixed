@@ -33,8 +33,7 @@ Welcome to **LVL-UP Lore**, a gaming blog where admins can share gaming-related 
   - [Future Features](#future-features)
     - [API Integration](#api-integration)
     - [Cloudinary API](#cloudinary-api)
-  - [Testing](#testing)
-    - [Bugs](#bugs)
+    - [Testing](#testing)
   - [Setup and Deployment](#setup-and-deployment)
     - [Create Repository](#create-repository)
     - [Initialize in VS Code](#initialize-in-vs-code)
@@ -201,7 +200,10 @@ This project was managed using Agile principles, focusing on iterative developme
 
 ### **Typography**
 - **Roboto**: Used for body text for readability.
+![Roboto](static/images/readme-files/3a392fca77ce5bebf165216f7f5f30e4.png)
+
 - **Press Start 2P**: Used for titles and headers to enhance visual hierarchy. The blockiness goes with a retro gamer feel.
+![Press Start 2P](static/images/readme-files/0311fe69e98b0a1ade4305203e5d1d46.png)
 
 ### **Color Scheme**
 
@@ -257,12 +259,15 @@ The database includes:
 The project uses the [Cloudinary](https://cloudinary.com/) API for handling media files like images and videos. The API key is stored in `env.py` for security purposes.
 
 
-## <a id="testing">Testing</a>
-- A separate document, TEST.md, contains detailed test cases and results.
-[Link to TEST.md](TEST.md)
-### <a id="bugs">Bugs</a>
-Documentation of known bugs and their status.
-All known bugs are in the [Kanban Board](https://github.com/users/andreasawenlof/projects/5) under the "Bugs" column.
+### Testing
+
+The site was tested for:
+- Functionality, responsiveness, and browser compatibility.
+- Accessibility using the Wave tool (no errors or warnings).
+- Code quality using W3C validators (no HTML or CSS errors).
+- Performance, accessibility, and SEO using Lighthouse (all scores above 90%).
+
+Detailed results are available in the [TESTING.md](TESTING.md).
 
 
 

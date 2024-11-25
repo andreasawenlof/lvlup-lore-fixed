@@ -12,7 +12,7 @@
             <div class="modal-body">Modal text goes here</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form id="deleteForm" method="POST" action="">
+                <form id="deleteForm" method="POST">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Confirm</button>
                 </form>
