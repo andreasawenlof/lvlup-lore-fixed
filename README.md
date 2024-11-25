@@ -1,5 +1,7 @@
 # LVL-UP Lore
 
+![AM-I-Responsive](static/images/readme-files/am-i-responsive.png)
+
 Welcome to **LVL-UP Lore**, a gaming blog where admins can share gaming-related posts, and users can engage through comments. This project emphasizes delivering core functionality with a clean, responsive interface. The platform fosters open discussions while ensuring respectful interactions.
 
 ![Homepage Screenshot Placeholder](path-to-image/homepage.png)
@@ -20,7 +22,6 @@ Welcome to **LVL-UP Lore**, a gaming blog where admins can share gaming-related 
     - [The Scope](#the-scope)
       - [**Features Included**](#features-included)
       - [**Features Excluded**](#features-excluded)
-    - [The Skeleton (Wireframes)](#the-skeleton-wireframes)
   - [Features](#features)
     - [Header Navigation](#header-navigation)
     - [Search Bar](#search-bar)
@@ -81,9 +82,9 @@ This project was managed using Agile principles, focusing on iterative developme
   - **In Progress**: Tasks currently being worked on.
   - **Completed**: Finished tasks.
 
-  ![Kanban Board Screenshot Placeholder](path-to-image/kanban-board.png)
+  ![Kanban Board Screenshot Placeholder](static/images/readme-files/kanban-board.png)
 
-  View the live board here: [GitHub Project Board](https://github.com/yourusername/yourproject/projects/1).
+  View the live board here: [GitHub Project Board](https://github.com/users/andreasawenlof/projects/5).
 
 #### **User Stories**
 - **As a user**, I want to:
@@ -137,30 +138,6 @@ This project was managed using Agile principles, focusing on iterative developme
 
 ---
 
-### The Skeleton (Wireframes)
-
-<details>
-<summary>Click to expand</summary>
-
-- **Homepage Wireframe**:
-  - Features a hero section and a list of posts in card format.
-  - Cards display the post title, image, excerpt, and author details.
-  - Includes a navigation bar and a search bar.
-
-![Homepage Wireframe Placeholder](path-to-image/homepage-wireframe.png)
-
-- **Post Detail Page**:
-  - Displays the full post and includes a comment section.
-  - Comments can be added, edited, or deleted.
-
-![Post Detail Page Wireframe Placeholder](path-to-image/post-detail-wireframe.png)
-
-- **Profile Page Wireframe**:
-  - Displays the user’s avatar, bio, and list of interactions (e.g., list of posts that has been commented on).
-
-![Profile Page Wireframe Placeholder](path-to-image/profile-wireframe.png)
-
-</details>
 
 ---
 
@@ -173,7 +150,9 @@ This project was managed using Agile principles, focusing on iterative developme
   - Logged-In User: Automatic generated Profile and appeared Logout links.
   - Admin: Adds Create Post, Drafts, and Contact Messages in a drowdown.
 
-![Header Navigation Screenshot Placeholder](path-to-image/header-navigation.png)
+![Header Navigation Screenshot Placeholder](static/images/readme-files/Header.png)
+![Header Navigation Screenshot Placeholder](static/images/readme-files/header-not-logged-in.png)
+![Header Navigation Screenshot Placeholder](static/images/readme-files/header-logged-no-staff.png)
 
 ---
 
@@ -187,7 +166,8 @@ This project was managed using Agile principles, focusing on iterative developme
   - Displays "No results found" if no matches exist.
   - Returns all posts for an empty search query.
 
-![Search Bar Screenshot Placeholder](path-to-image/search-bar.png)
+![Search Bar Screenshot Placeholder](static/images/readme-files/Search-bar.png)
+![Search Bar Screenshot Placeholder](static/images/readme-files/Search-no-found.png)
 
 </details>
 
@@ -214,7 +194,7 @@ This project was managed using Agile principles, focusing on iterative developme
 - Hover effects on buttons and links.
 - Smooth transitions for modals (e.g., confirmations).
 
-![Design Choices Placeholder](path-to-image/design-choices.png)
+![Design Choices Placeholder](static/images/readme-files/palette.png)
 
 </details>
 
