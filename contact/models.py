@@ -4,7 +4,6 @@ from django.db import models
 
 class Contact(models.Model):
     """ Model to store contact form submissions """
-    name = models.CharField(max_length=200, blank=False, null=False)
     subject = models.CharField(max_length=100, blank=False, null=False)
     email = models.EmailField(blank=False, null=False)
     message = models.TextField()
@@ -14,4 +13,4 @@ class Contact(models.Model):
     objects = models.Manager()
 
     def __str__(self):
-        return f"Message from {self.name}"
+        return f"Message with subject {self.subject}"

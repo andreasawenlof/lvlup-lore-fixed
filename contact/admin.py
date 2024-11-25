@@ -6,10 +6,10 @@ from .models import Contact
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     """ Admin configuration for the Contact model """
-    list_display = ('name', 'subject', 'message', 'read', 'created_on')
-    readonly_fields = ('name', 'subject', 'email', 'message', 'created_on',)
+    list_display = ('subject', 'email', 'message', 'created_on', 'read')
+    readonly_fields = ('subject', 'email', 'message', 'created_on',)
 
     class Meta:
         """ Meta class for the ContactAdmin class """
         model = Contact
-        fields = ['name', 'email', 'message', 'read']
+        fields = ['subject', 'email', 'message', 'read']
