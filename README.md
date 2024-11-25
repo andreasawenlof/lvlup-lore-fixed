@@ -1,7 +1,7 @@
 # Gaming Blog - LVL-UP Lore
 
 ## Project Overview
-Welcome to **LVL-UP Lore**, a gaming blog where admins can share gaming-related posts and users can engage through comments. Built using Django, this project focuses on delivering core functionality with a clean and responsive interface.
+LVLUP Lore is a gaming Blog for nerds where they can hear about the laste news and share theigh thoughts.
 
 [Live Site](<insert-live-site-link>) | [GitHub Repository](<insert-repo-link>)
 

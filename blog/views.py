@@ -16,7 +16,7 @@ class PostList(ListView):
     """ List of all posts """
     template_name = "blog/index.html"
     model = Post
-    queryset = Post.objects.filter(status=1).order_by("-created_on")
+    queryset = Post.objects.filter(status=1).order_by("-published_date")
     context_object_name = "posts"
     paginate_by = 3
 
@@ -26,14 +26,19 @@ class PostList(ListView):
 
         # If there's a search query, filter posts by title
         if query:
-            return queryset.filter(Q(title__icontains=query)).order_by("-created_on")
+            return queryset.filter(Q(title__icontains=query)).order_by("-published_date")
 
         # If no query is provided, show all posts
-        return queryset.order_by("-created_on")
+        return queryset.order_by("-published_date")
 
     def annotate_comment_count(self, queryset):
         """ Annotate the queryset with the number of comments on each post """
         return queryset.annotate(comment_count=Count("comments"))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["query"] = self.request.GET.get("q", "")
+        return context
 
 
 class DraftPostList(LoginRequiredMixin, UserPassesTestMixin, ListView):
