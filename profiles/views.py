@@ -1,6 +1,7 @@
 """ Import the necessary modules """
 
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 from django.views.generic import TemplateView, UpdateView
 from django.contrib.auth.models import User  # Import the User model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -25,7 +26,8 @@ class Profiles(TemplateView):
 
         context = {
             "profile": profile,
-            "commented_posts": commented_posts,  # Add the posts to the context
+            "commented_posts": commented_posts,
+            'form': ProfileForm(instance=profile)
         }
 
         return context
@@ -38,10 +40,16 @@ class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile
     form_class = ProfileForm
 
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, "Profile updated successfully")
         self.success_url = f"/profile/view/{self.kwargs['pk']}"
         return super().form_valid(form)
 
-    def test_func(self):
-        return self.request.user == self.get_object().user
+    def form_invalid(self, form):
+        messages.error(
+            self.request, "There was an error updating your profile. Please try again.")
+        return super().form_invalid(form)

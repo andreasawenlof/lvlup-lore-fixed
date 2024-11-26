@@ -9,7 +9,11 @@
         <div class="profile">
             <div class="info">
                 <div class="profile-img">
-                    <img class="card-img-top w-25 mb-3" src="{% static 'icons/profile-placeholder.webp' %}" alt="placeholder image" />
+                    {% if profile.image.url is not null %}
+                        <img class="card-img-top w-25 mb-3" src=" {{ profile.image.url }}" alt="{{ profile.user.image }}'s image" />
+                    {% else %}
+                        <img class="card-img-top w-25 mb-3" src="{% static 'icons/profile-placeholder.webp' %}" alt="placeholder image" />
+                    {% endif %}
                 </div>
                 <h1>{{ profile.user.username }}</h1>
                 <p>
@@ -22,12 +26,18 @@
                 <ul>
                     {% for post in commented_posts %}
                         <li class="list-unstyled">
-                            <strong><a href="{% url 'post_detail_by_slug' post.slug %}" class="author-link">{{ post.title }}</a></strong>
+                            <strong><a href="{% url 'post_detail_by_slug' post.slug %}" class="general-link">{{ post.title }}</a></strong>
                         </li>
                     {% empty %}
                         Hasn't commented on any posts yet.
                     {% endfor %}
                 </ul>
+                {% if profile.bio is not null %}
+                    {{ profile.bio|safe }}
+                {% endif %}
+                {% if request.user == profile.user %}
+                    <button id="myBtn" class="btn btn-success w-25 mb-4">Edit</button>
+                {% endif %}
             </div>
         </div>
     </div>
