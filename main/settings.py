@@ -97,6 +97,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # Your custom context processor:
             ],
             "builtins": [
                 "crispy_forms.templatetags.crispy_forms_tags",

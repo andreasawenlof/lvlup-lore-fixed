@@ -20,7 +20,7 @@
                     <strong>Joined:</strong>{{ profile.user.date_joined|date:'d M Y' }}
                 </p>
                 {% if request.user == profile.user %}
-                    <button type="button" class="btn btn-success w-50 mb-4" data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-confirm="Update" data-bs-confirm-color="btn-success" data-bs-url="{% url 'edit_profile' request.user.id %}">Edit Profile</button>
+                    <button type="button" class="btn btn-success w-50 mb-4" data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-title="Edit Profile" data-bs-body="Here you can update your profile" data-bs-confirm="Update" data-bs-confirm-color="btn-success" data-bs-url="{% url 'edit_profile' request.user.id %}">Edit Profile</button>
                 {% endif %}
                 {% if profile.bio is not null %}
                     <p>{{ profile.bio|safe }}</p>

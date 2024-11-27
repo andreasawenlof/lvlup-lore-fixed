@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalTitleElement = modalConfirm.querySelector('.modal-title');
         const modalBodyElement = modalConfirm.querySelector('.modal-body');
         const modalCancelElement = modalConfirm.querySelector('.modal-cancel');
-        const modalConfirmBtn = modalConfirm.querySelector('.modal-confirm');
+        const modalConfirmElement = modalConfirm.querySelector('.modal-confirm');
 
         if (modalTitle) modalTitleElement.textContent = modalTitle;
         if (modalBody) modalBodyElement.textContent = modalBody;
         if (cancelBtn) modalCancelElement.textContent = cancelBtn;
-        if (confirmBtn) modalConfirmBtn.textContent = confirmBtn;
-        if (confirmBtn) modalConfirmBtn.className = `modal-confirm btn ${confirmBtnColor || 'btn-danger'}`;
+        if (confirmBtn) modalConfirmElement.textContent = confirmBtn;
+        if (confirmBtn) modalConfirmElement.className = `modal-confirm btn ${confirmBtnColor || 'btn-danger'}`;
 
         // Set the form's action dynamically
         if (confirmUrl) modalConfirmForm.setAttribute('action', confirmUrl);
