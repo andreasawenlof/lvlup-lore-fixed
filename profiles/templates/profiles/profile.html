@@ -9,8 +9,8 @@
         <div class="profile">
             <div class="info">
                 <div class="profile-img">
-                    {% if profile.image.url is not null %}
-                        <img class="card-img-top w-25 mb-3" src=" {{ profile.image.url }}" alt="{{ profile.user.image }}'s image" />
+                    {% if profile.image %}
+                        <img class="card-img-top w-sm-100 w-lg-25 mb-3" src=" {{ profile.image.url }}" alt="{{ profile.user.image }}'s image" />
                     {% else %}
                         <img class="card-img-top w-25 mb-3" src="{% static 'icons/profile-placeholder.webp' %}" alt="placeholder image" />
                     {% endif %}
@@ -19,6 +19,13 @@
                 <p>
                     <strong>Joined:</strong>{{ profile.user.date_joined|date:'d M Y' }}
                 </p>
+                {% if request.user == profile.user %}
+                    <button type="button" class="btn btn-success w-50 mb-4" data-bs-toggle="modal" data-bs-target="#modalForm" data-bs-confirm="Update" data-bs-confirm-color="btn-success" data-bs-url="{% url 'edit_profile' request.user.id %}">Edit Profile</button>
+                {% endif %}
+                {% if profile.bio is not null %}
+                    <p>{{ profile.bio|safe }}</p>
+                {% endif %}
+                <br />
                 <p>
                     <strong>Posts commented on:</strong>
                 </p>
@@ -32,12 +39,6 @@
                         Hasn't commented on any posts yet.
                     {% endfor %}
                 </ul>
-                {% if profile.bio is not null %}
-                    {{ profile.bio|safe }}
-                {% endif %}
-                {% if request.user == profile.user %}
-                    <button id="myBtn" class="btn btn-success w-25 mb-4">Edit</button>
-                {% endif %}
             </div>
         </div>
     </div>

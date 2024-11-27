@@ -20,8 +20,8 @@
         </title>
     </head>
     <body>
-        {% include 'includes/header.html' %}
-        {% include 'includes/modals.html' %}
+        {% include 'includes/partials/header.html' %}
+        {% include 'includes/partials/modals.html' %}
         <main>
             {% if messages %}
                 <div class="mt-3">
@@ -34,10 +34,11 @@
 
             {% endblock %}
         </main>
-        {% include 'includes/footer.html' %}
-        <script src="{% static 'js/comments.js' %}"></script>
-        <script src="{% static 'js/confirmation_modal.js' %}"></script>
-        <script src="{% static 'js/row_click.js' %}"></script>
+        {% include 'includes/partials/footer.html' %}
+        {% block extra_js %}
+            <script src="{% static 'js/comments.js' %}"></script>
+            <script src="{% static 'js/row_click.js' %}"></script>
+        {% endblock %}
         <script src="https://kit.fontawesome.com/0a08a9900a.js" crossorigin="anonymous"></script>
     </body>
 </html>

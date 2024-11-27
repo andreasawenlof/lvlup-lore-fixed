@@ -1,0 +1,25 @@
+<div class="modal fade" id="modalForm" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalFormLabel">Placeholder Title</h1>
+                <button type="button" class="modal-close btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Placeholder body text.</p>
+            </div>
+            <div class="modal-footer">
+                <form id="modalFormForm" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    {{ form.media }}
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <button type="button" class="modal-cancel btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="modal-confirm btn btn-danger">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

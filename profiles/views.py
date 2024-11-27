@@ -46,7 +46,7 @@ class EditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         messages.success(self.request, "Profile updated successfully")
-        self.success_url = f"/profile/view/{self.kwargs['pk']}"
+        self.success_url = f"/profiles/user/{self.kwargs['pk']}"
         return super().form_valid(form)
 
     def form_invalid(self, form):
