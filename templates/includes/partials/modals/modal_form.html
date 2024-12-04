@@ -6,7 +6,12 @@
                 <button type="button" class="modal-close btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Loading...</p>
+                <form id="modalLoginForm" method="POST">
+                    <input type="text" name="username" id="authModalUser" />
+                    <input id="authModalPass" type="password" name="password" />
+                    <input id="authModalSubmit" type="submit" value="Submit" />
+                    {% csrf_token %}
+                </form>
             </div>
         </div>
     </div>
