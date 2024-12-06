@@ -25,4 +25,5 @@ urlpatterns = [
     path("contact/", include("contact.urls")),
     path("profiles/", include("profiles.urls"), name="profiles-urls"),
     path("tinymce", include("tinymce.urls")),
+    path("auth/", include("my_auth.urls")),
 ]

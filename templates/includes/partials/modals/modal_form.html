@@ -1,15 +1,13 @@
-<div class="modal fade" id="modalAuth" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="modalAuthLabel" aria-hidden="true">
+<div class="modal fade" id="modalForm" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalAuthLabel">Login</h1>
+                <h1 class="modal-title fs-5" id="modalFormLabel">Login</h1>
                 <button type="button" class="modal-close btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="modalLoginForm" method="POST">
-                    <input type="text" name="username" id="authModalUser" />
-                    <input id="authModalPass" type="password" name="password" />
-                    <input id="authModalSubmit" type="submit" value="Submit" />
+                    {{ form|crispy }}
                     {% csrf_token %}
                 </form>
             </div>
